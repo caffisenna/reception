@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/mypage', [App\Http\Controllers\MyPageController::class, 'index'])->name('mypage');
 
 // 管理ユーザ用
 Route::prefix('admin')->middleware('can:admin')->group(function () {

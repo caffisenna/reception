@@ -1,5 +1,6 @@
 @extends('errors::minimal')
 
-@section('title', __('Forbidden'))
-@section('code', '403')
-@section('message', __($exception->getMessage() ?: 'Forbidden'))
+@section('title', __('403 | Forbidden'))
+@section('code', '')
+{{-- @section('message', __($exception->getMessage() ?: 'Forbidden')) --}}
+@section('message','会場でお待ちしてます')

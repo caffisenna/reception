@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// 管理ユーザ用
+Route::prefix('admin')->middleware('can:admin')->group(function () {
+    Route::resource('participants', App\Http\Controllers\ParticipantController::class);
+});
+// スタッフ用
+Route::prefix('staff')->middleware('can:staff')->group(function () {
+});

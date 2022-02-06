@@ -34,8 +34,10 @@
                 <div class="content px-3">
 
                     <div class="card">
-                        <h3 class="uk-card-title">マイページ</h3>
-                        <p class="uk-text-primary uk-text-small">このページをブックマーク、もしくはスクリーンショットを保存して受け付けでご提示下さい。</p>
+                        <div style="background-color:#115740">
+                        <p class="uk-text-large uk-text-center" style="color:#FFF">100周年レセプション<br>デジタルパス</p>
+                    </div>
+                        <p class="uk-text-primary uk-text-small">このページをブックマーク、もしくはスクリーンショットを保存して受付でご提示下さい。</p>
                         <div class="card-body p-0">
                             <table class="uk-table uk-table-hover uk-table-striped">
                                 <tr>
@@ -60,13 +62,11 @@
                                     <td>{{ $participant->role }}</td>
                                 </tr>
                                 <tr>
-                                    <td>QRコード</td>
-                                    <td>{!! QrCode::size(200)->generate($participant->uuid) !!}</td>
+                                    <td>QR</td>
+                                    <td>{!! QrCode::size(200)->generate(url('/?id=').$participant->uuid) !!}</td>
                                 </tr>
                             </table>
-
                         </div>
-
                     </div>
                 </div>
 

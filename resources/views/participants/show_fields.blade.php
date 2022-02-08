@@ -28,8 +28,8 @@
         <td>{{ $participant->phone }}</td>
     </tr>
     <tr>
-        <td>UUID</td>
-        <td>{{ $participant->uuid }}</td>
+        <td>UUID<br>マイページ</td>
+        <td><a href="{{ url('/mypage?id=').$participant->uuid }}">{{ $participant->uuid }}</a></td>
     </tr>
     <tr>
         <td>QRコード</td>

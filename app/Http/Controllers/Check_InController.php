@@ -30,6 +30,7 @@ class Check_InController extends AppBaseController
         if (isset($request->id)) {
             $participant = Participant::where('uuid', $request->id)->firstorfail();
             $participant->checkedin_at = now();
+            $participant->save();
             return view('check_in.index')
             ->with('participant', $participant);
         }else{

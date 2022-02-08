@@ -42,7 +42,7 @@ class Check_InController extends AppBaseController
 
     public function input(Request $request){
         if(isset($request->furigana)){
-            $participants = Participant::where('furigana','like',"$request->furigana%")->get();
+            $participants = Participant::where('furigana','like',"$request->furigana%")->where('checkedin_at',null)->get();
             return view('check_in.input')->with('participants', $participants);
         }
         return view('check_in.input');

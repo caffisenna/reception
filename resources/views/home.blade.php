@@ -10,7 +10,7 @@
                     <li>もしエラーで読み取れない場合は↓のボタンから手作業でチェックイン!</li>
                 </ul>
                 <a href="{{ url('/s/check_in/input') }}"
-                    class="uk-button uk-button-primary uk-button-xlarge form-control">手入力</a>
+                    class="uk-button uk-button-primary uk-button-xlarge form-control">チェックイン</a>
             @endauth
         </div>
     </div>

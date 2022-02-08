@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1>Create Participant</h1>
+                    <h1>参加者追加</h1>
                 </div>
             </div>
         </div>

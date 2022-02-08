@@ -35,18 +35,15 @@
 
                     <div class="card">
                         <div style="background-color:#115740">
-                            <p class="uk-text-large uk-text-center" style="color:#FFF">100周年レセプション<br>Digital Pass</p>
+                            <p class="uk-text-large uk-text-center" style="color:#FFF">チェックイン完了</p>
                         </div>
-                        <p class="uk-text-primary uk-text-small">このページをブックマーク、もしくはスクリーンショットを保存して受付でご提示下さい。</p>
+                        <p class="uk-text-success uk-text-small">ご来場を受け付けました</p>
+                        <a href="{{ url('/home') }}" class="uk-button uk-button-primary">戻る</a>
                         <div class="card-body p-0">
                             <table class="uk-table uk-table-hover uk-table-striped">
                                 <tr>
                                     <td>氏名</td>
                                     <td>{{ $participant->name }} 様</td>
-                                </tr>
-                                <tr>
-                                    <td>QR</td>
-                                    <td>{!! QrCode::size(200)->generate(url('/s/check_in?id=') . $participant->uuid) !!}</td>
                                 </tr>
                                 <tr>
                                     <td>座席番号</td>
@@ -60,6 +57,10 @@
                                 <tr>
                                     <td>役務</td>
                                     <td>{{ $participant->role }}</td>
+                                </tr>
+                                <tr>
+                                    <td>チェックイン</td>
+                                    <td>{{ $participant->checkedin_at }}</td>
                                 </tr>
                             </table>
                         </div>

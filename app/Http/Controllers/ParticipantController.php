@@ -30,7 +30,7 @@ class ParticipantController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $participants = $this->participantRepository->all();
+        $participants = $this->participantRepository->paginate(100);
 
         return view('participants.index')
             ->with('participants', $participants);

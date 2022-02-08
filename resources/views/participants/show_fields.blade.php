@@ -35,4 +35,8 @@
         <td>QRコード</td>
         <td>{!! QrCode::size(150)->generate($participant->uuid) !!}</td>
     </tr>
+    <tr>
+        <td>チェックイン</td>
+        <td>{{ $participant->checkedin_at }}</td>
+    </tr>
 </table>

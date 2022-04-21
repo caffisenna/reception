@@ -10,7 +10,7 @@
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.13.10/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.13.10/dist/js/uikit-icons.min.js"></script>
-    <title>100周年記念式典受付システム</title>
+    <title>受付システム</title>
 </head>
 
 <body class="antialiased">

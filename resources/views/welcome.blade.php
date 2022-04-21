@@ -15,9 +15,10 @@
 
 <body class="antialiased">
     <h2 class="uk-text-lead">dev menu</h2>
-    <ul class="uk-list">
-        <li><a href="{{ url('/login') }}" class="uk-button un-button-primary uk-button-large">LOGIN</a></li>
-    </ul>
+
+    <a href="{{ url('/login') }}" class="uk-button uk-button-primary uk-button-large">LOGIN</a>
+    <a href="#" class="uk-button uk-button-default uk-button-large">Register</a>
+
     <footer class="main-footer" style="background-color:#115740; color:#fff">
         <p class="uk-text-small uk-text-center">ボーイスカウト東京連盟<br>
             {{ config('app.name') }} &copy;</p>

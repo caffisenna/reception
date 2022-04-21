@@ -12,6 +12,10 @@
                 <a href="{{ url('/s/check_in/input') }}"
                     class="uk-button uk-button-primary uk-button-xlarge form-control">チェックイン</a>
             @endif
+
+            @if(auth::user()->is_admin)
+            <h3>管理者さんようこそ!</h3>
+            @endauth
         </div>
     </div>
 @endsection

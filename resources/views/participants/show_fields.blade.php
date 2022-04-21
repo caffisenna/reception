@@ -33,7 +33,7 @@
     </tr>
     <tr>
         <td>QRコード</td>
-        <td>{!! QrCode::size(150)->generate($participant->uuid) !!}</td>
+        <td>{!! QrCode::size(150)->generate('https://reception.rs100.info/mypage?id='.$participant->uuid) !!}</td>
     </tr>
     <tr>
         <td>チェックイン</td>

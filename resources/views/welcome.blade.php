@@ -14,12 +14,10 @@
 </head>
 
 <body class="antialiased">
-    <h2 class="uk-text-lead">dev menu</h2>
+    <button class="uk-button uk-button-primary uk-button-large uk-align-center"
+        onclick="location.href='{{ url('/login') }}'"><span uk-icon="sign-in"></span>LOGIN</button>
 
-    <a href="{{ url('/login') }}" class="uk-button uk-button-primary uk-button-large">LOGIN</a>
-    <a href="#" class="uk-button uk-button-default uk-button-large">Register</a>
-
-    <footer class="main-footer" style="background-color:#115740; color:#fff">
+    <footer class="main-footer uk-position-bottom" style="background-color:#115740; color:#fff">
         <p class="uk-text-small uk-text-center">ボーイスカウト東京連盟<br>
             {{ config('app.name') }} &copy;</p>
     </footer>

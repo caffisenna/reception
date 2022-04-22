@@ -14,9 +14,10 @@
 </head>
 
 <body class="antialiased">
-    <button class="uk-button uk-button-primary uk-button-large uk-align-center"
-        onclick="location.href='{{ url('/login') }}'"><span uk-icon="sign-in"></span>LOGIN</button>
-
+    <div class="uk-container uk-container-large">
+        <button class="uk-button uk-button-primary uk-button-large uk-align-center uk-margin-large-top"
+            onclick="location.href='{{ url('/login') }}'"><span uk-icon="sign-in"></span>LOGIN</button>
+    </div>
     <footer class="main-footer uk-position-bottom" style="background-color:#115740; color:#fff">
         <p class="uk-text-small uk-text-center">ボーイスカウト東京連盟<br>
             {{ config('app.name') }} &copy;</p>

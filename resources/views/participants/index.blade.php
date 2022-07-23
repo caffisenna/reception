@@ -14,7 +14,7 @@
                 </div>
                 <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
                     {{ Form::open(['action','ParticipnatController@search']) }}
-                    {!! Form::text('furigana', old('furigana'), ['class' => 'uk-input', 'placeholder' => 'ふりがなで入力']) !!}
+                    {!! Form::text('furigana', old('furigana'), ['class' => 'uk-input', 'placeholder' => 'ふりがな']) !!}
                     {!! Form::submit('ふりがな検索', ['class' => 'uk-button uk-button-primary']) !!}
                     {{ Form::close() }}
                 </div>

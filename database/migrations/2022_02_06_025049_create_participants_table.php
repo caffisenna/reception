@@ -35,7 +35,8 @@ class CreateParticipantsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('seat_number')->nullable();
             $table->string('uuid')->unique();
-            $table->dateTime('checkedin_at')->nullable();
+            $table->dateTime('checkedin_at')->nullable();           // 式典チェックイン
+            $table->dateTime('reception_checkedin_at')->nullable(); // レセプションチェックイン
             $table->timestamps();
             $table->softDeletes();
         });

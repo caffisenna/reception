@@ -6,6 +6,7 @@ use App\Http\Requests\CreateParticipantRequest;
 use App\Http\Requests\UpdateParticipantRequest;
 use App\Repositories\ParticipantRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Participant;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -34,6 +35,19 @@ class ParticipantController extends AppBaseController
 
         return view('participants.index')
             ->with('participants', $participants);
+    }
+
+    public function search(Request $request)
+    {
+        if(isset($request->furigana)){
+            $participants = Participant::where('furigana','like',"$request->furigana%")->where('checkedin_at',null)->paginate(100);
+            return view('participants.index')->with('participants', $participants);
+        }
+
+        if(isset($request->prefecture)){
+            $participants = Participant::where('pref',"$request->prefecture")->where('checkedin_at',null)->paginate(100);
+            return view('participants.index')->with('participants', $participants);
+        }
     }
 
     /**

@@ -25,6 +25,7 @@ Route::get('/mypage', [App\Http\Controllers\MyPageController::class, 'index'])->
 // 管理ユーザ用
 Route::prefix('admin')->middleware('can:admin')->group(function () {
     Route::resource('participants', App\Http\Controllers\ParticipantController::class);
+    Route::post('participants', [App\Http\Controllers\ParticipantController::class,'search'])->name('search');
 });
 
 // スタッフ用

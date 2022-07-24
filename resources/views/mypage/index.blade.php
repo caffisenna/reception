@@ -35,7 +35,7 @@
 
                     <div class="card">
                         <div style="background-color:#115740">
-                            <p class="uk-text-large uk-text-center" style="color:#FFF">100周年レセプション<br>Digital Pass</p>
+                            <p class="uk-text-large uk-text-center" style="color:#FFF">100周年記念式典 & レセプション<br>Digital Pass</p>
                         </div>
                         <p class="uk-text-primary uk-text-small">このページをブックマーク、もしくはスクリーンショットを保存して受付でご提示下さい。</p>
                         <div class="card-body p-0">

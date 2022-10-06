@@ -24,8 +24,8 @@ class CreateParticipantsTable extends Migration
             $table->string('dan_number')->nullable();
             $table->string('role')->nullable();
             $table->integer('pref_priority')->nullable();       // 県連優先順位
-            $table->boolean('is_represent')->default(false);    // 県連代表
-            $table->boolean('is_proxy')->default(false);        // 代理 0 1
+            $table->string('is_represent')->nullable();         // 県連代表
+            $table->string('is_proxy')->nullable();             // 代理 役職が入れば代理判定
             $table->boolean('wheel_chair')->default(false);     // 車椅子 0 1
             $table->string('with_helper')->nullable();          // 介助者同行 ID
             $table->string('go_with_leader')->nullable();       // 同行親リーダー メアド or uuid

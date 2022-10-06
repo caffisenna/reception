@@ -35,7 +35,7 @@
 
                     <div class="card">
                         <div style="background-color:#115740">
-                            <p class="uk-text-large uk-text-center" style="color:#FFF">100周年記念式典 & レセプション<br>Digital Pass</p>
+                            <p class="uk-text-large uk-text-center" style="color:#FFF">100周年記念式典 & レセプション<br>デジタルパス</p>
                         </div>
                         <p class="uk-text-primary uk-text-small">このページをブックマーク、もしくはスクリーンショットを保存して受付でご提示下さい。</p>
                         <div class="card-body p-0">
@@ -61,8 +61,38 @@
                                     <td>役務</td>
                                     <td>{{ $participant->role }}</td>
                                 </tr>
+                                <tr>
+                                    <td>チェックイン</td>
+                                    <td><a href="#modal-self-check-in" uk-toggle class=" uk-button uk-button-primary uk-width-1-1@m">チェックイン</a></td>
+                                </tr>
+                                <tr>
+                                    <td>欠席手続</td>
+                                    <td><a href="#modal-self-absent" uk-toggle class=" uk-button uk-button-danger uk-width-1-1@m">欠席</a></td>
+                                </tr>
                             </table>
                         </div>
+                    </div>
+                </div>
+
+                <div id="modal-self-check-in" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <h2 class="uk-modal-title">チェックイン</h2>
+                        <p>ご自身でチェックイン(到着手続き)を行います。引率するスカウトも一緒に到着扱いとなります。</p>
+                        <p class="uk-text-right">
+                            <button class="uk-button uk-button-default uk-modal-close" type="button">キャンセル</button>
+                            <button class="uk-button uk-button-primary" type="button">チェックインする</button>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="modal-self-absent" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <h2 class="uk-modal-title">欠席手続き</h2>
+                        <p>ご自身で欠席手続きを行います。諸事情で参加を取りやめる場合はこちらで手続きをしてください。</p>
+                        <p class="uk-text-right">
+                            <button class="uk-button uk-button-default uk-modal-close" type="button">キャンセル</button>
+                            <button class="uk-button uk-button-danger" type="button">欠席する</button>
+                        </p>
                     </div>
                 </div>
 

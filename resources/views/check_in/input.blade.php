@@ -20,13 +20,22 @@
                     <table class="uk-table uk-table-hover uk-table-striped uk-table-small">
                         <tr>
                             <th>氏名</th>
-                            <th>座席番号</th>
+                            <th>座席</th>
                             <th>所属</th>
                             <th>チェックイン</th>
                         </tr>
                         @foreach ($participants as $participant)
-                            <tr>
-                                <td>{{ $participant->name }}</td>
+                            <tr class="uk-text-small">
+                                <td>{{ $participant->name }}
+                                    <span class="uk-text-warning">
+                                        @if (isset($participant->vs))
+                                            <br>(VS){{ $participant->vs->name }}
+                                        @endif
+                                        @if (isset($participant->bs))
+                                            <br>(BS){{ $participant->bs->name }}
+                                        @endif
+                                    </span>
+                                </td>
                                 <td>{{ $participant->seat_number }}</td>
                                 <td>{{ $participant->pref }}</td>
                                 <td><a href="{{ url('/s/check_in/input?uuid=') . $participant->uuid }}"

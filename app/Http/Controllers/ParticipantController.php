@@ -40,7 +40,20 @@ class ParticipantController extends AppBaseController
     public function search(Request $request)
     {
         if(isset($request->furigana)){
+
+            // 個別氏名をサーチ
             $participants = Participant::where('furigana','like',"$request->furigana%")->where('checkedin_at',null)->paginate(100);
+
+            // foreachで回して、引率指導者の場合は同じ県連のBSとVSを引っかける
+            // $participant->vs $participant->bs などに格納
+            foreach ($participants as $value) {
+                if($value->is_represent == "県連代表(4)"){
+                    $value->vs = Participant::where('pref', $value->pref)->where('is_represent','県連代表(5)')->select('name')->first();
+                    $value->bs = Participant::where('pref', $value->pref)->where('is_represent','県連代表(6)')->select('name')->first();
+                }
+            }
+
+            // 結果を返す
             return view('participants.index')->with('participants', $participants);
         }
 

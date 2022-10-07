@@ -29,10 +29,10 @@
                                 <td>{{ $participant->name }}
                                     <span class="uk-text-warning">
                                         @if (isset($participant->vs))
-                                            <br>(VS){{ $participant->vs->name }}
+                                            <br>VS:{{ $participant->vs->name }}
                                         @endif
                                         @if (isset($participant->bs))
-                                            <br>(BS){{ $participant->bs->name }}
+                                            <br>BS:{{ $participant->bs->name }}
                                         @endif
                                     </span>
                                 </td>

@@ -33,4 +33,5 @@ Route::prefix('s')->middleware('can:staff')->group(function () {
     Route::get('/check_in', [App\Http\Controllers\Check_InController::class, 'index'])->name('check_in');
     Route::get('/check_in/input', [App\Http\Controllers\Check_InController::class, 'input'])->name('input');
     Route::post('/check_in/input', [App\Http\Controllers\Check_InController::class, 'input'])->name('input');
+    Route::resource('staffinfos', App\Http\Controllers\StaffinfoController::class);
 });

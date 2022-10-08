@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card">
             <div style="background-color:#115740">
-                <p class="uk-text-large uk-text-center" style="color:#FFF">100周年記念式典 & レセプション<br>チェックイン</p>
+                <p class="uk-text-large uk-text-center" style="color:#FFF">チェックイン</p>
             </div>
             <div class="card-body p-0">
                 <div class="uk-card uk-card-default uk-card-body uk-width-1-1@m">
@@ -26,7 +26,7 @@
                         </tr>
                         @foreach ($participants as $participant)
                             <tr class="uk-text-small">
-                                <td>{{ $participant->name }}
+                                <td>{{ $participant->name }}({{ $participant->furigana }})
                                     <span class="uk-text-warning">
                                         @if (isset($participant->vs))
                                             <br>VS:{{ $participant->vs->name }}

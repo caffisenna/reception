@@ -18,7 +18,7 @@ class CreateStaffinfosTable extends Migration
             $table->increments('id');
             $table->foreignId('user_id')->nullable()->constrained();
             $table->string('furigana');
-            $table->date('birth_day');
+            $table->date('birth_day')->nullable();
             $table->string('gender');
             $table->string('bs_id');
             $table->string('prefecture');
@@ -26,8 +26,8 @@ class CreateStaffinfosTable extends Migration
             $table->string('dan');
             $table->string('role');
             $table->string('cell_phone');
-            $table->string('zip');
-            $table->string('address');
+            $table->string('zip')->nullable();
+            $table->string('address')->nullable();
             $table->string('team')->nullable();
             $table->text('memo')->nullable();
             $table->timestamps();

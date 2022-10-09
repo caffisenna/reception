@@ -39,17 +39,17 @@ class ParticipantController extends AppBaseController
 
     public function search(Request $request)
     {
-        if(isset($request->furigana)){
+        if (isset($request->furigana)) {
 
             // 個別氏名をサーチ
-            $participants = Participant::where('furigana','like',"$request->furigana%")->where('checkedin_at',null)->paginate(100);
+            $participants = Participant::where('furigana', 'like', "$request->furigana%")->where('checkedin_at', null)->paginate(100);
 
             // foreachで回して、引率指導者の場合は同じ県連のBSとVSを引っかける
             // $participant->vs $participant->bs などに格納
             foreach ($participants as $value) {
-                if($value->is_represent == "県連代表(4)"){
-                    $value->vs = Participant::where('pref', $value->pref)->where('is_represent','県連代表(5)')->select('name')->first();
-                    $value->bs = Participant::where('pref', $value->pref)->where('is_represent','県連代表(6)')->select('name')->first();
+                if ($value->is_represent == "県連代表(4)") {
+                    $value->vs = Participant::where('pref', $value->pref)->where('is_represent', '県連代表(5)')->select('name')->first();
+                    $value->bs = Participant::where('pref', $value->pref)->where('is_represent', '県連代表(6)')->select('name')->first();
                 }
             }
 
@@ -57,8 +57,8 @@ class ParticipantController extends AppBaseController
             return view('participants.index')->with('participants', $participants);
         }
 
-        if(isset($request->prefecture)){
-            $participants = Participant::where('pref',"$request->prefecture")->where('checkedin_at',null)->paginate(100);
+        if (isset($request->prefecture)) {
+            $participants = Participant::where('pref', "$request->prefecture")->where('checkedin_at', null)->paginate(100);
             return view('participants.index')->with('participants', $participants);
         }
     }
@@ -183,5 +183,23 @@ class ParticipantController extends AppBaseController
         Flash::success('削除しました');
 
         return redirect(route('participants.index'));
+    }
+
+    public function checked_in(Request $request)
+    {
+        $participants = Participant::where('checkedin_at', '<>', NULL)
+            ->paginate(100);
+
+        return view('participants.index')
+            ->with('participants', $participants);
+    }
+
+    public function absent_list(Request $request)
+    {
+        $participants = Participant::where('self_absent', '<>', NULL)
+            ->paginate(100);
+
+        return view('participants.index')
+            ->with('participants', $participants);
     }
 }

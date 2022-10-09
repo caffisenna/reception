@@ -6,6 +6,13 @@
         <p>参加者</p>
     </a>
 </li>
+<p class="uk-text-warning">情報</p>
+<li class="nav-item">
+    <a href="{{ route('admin_staffinfos.index') }}"
+       class="nav-link {{ Request::is('admin_staffinfos*') ? 'active' : '' }}">
+        <p>スタッフ情報</p>
+    </a>
+</li>
 @endif
 
 @if(auth()->user()->is_staff)

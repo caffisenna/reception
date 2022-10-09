@@ -30,7 +30,7 @@ class CreateParticipantsTable extends Migration
             $table->string('with_helper')->nullable();          // 介助者同行 ID
             $table->string('go_with_leader')->nullable();       // 同行親リーダー メアド or uuid
             $table->string('go_with_scouts')->nullable();       // 引率されるスカウト uuid
-            $table->datetime('self_absent_at')->nullable();     // セルフ欠席処理 日時
+            $table->string('self_absent')->nullable();          // 欠席理由 自己入力, 指導者入力, 発熱NG
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('seat_number')->nullable();

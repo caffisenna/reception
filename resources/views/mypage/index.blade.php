@@ -8,6 +8,9 @@
 
     <script src="{{ url('js/jquery.min.js') }}"></script>
 
+    <!-- AdminLTE -->
+    <link rel="stylesheet" href="{{ url('css/adminlte.min.css') }}" />
+
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="{{ url('css/uikit.min.css') }}" />
 
@@ -38,20 +41,53 @@
                             <p class="uk-text-default uk-text-center" style="color:#FFF">100周年記念式典 & レセプション<br>デジタルパス
                             </p>
                         </div>
+                        @include('flash::message')
                         <p class="uk-text-primary uk-text-small uk-margin-auto-vertical">
                             このページをブックマーク、もしくはスクリーンショットを保存して受付でご提示下さい。</p>
                         <div class="card-body p-0">
                             <table class="uk-table uk-table-hover uk-table-striped">
                                 <tr>
-                                    <td>氏名</td>
-                                    <td>{{ $participant->name }} 様</td>
+                                    <th>氏名</th>
+                                    <td>{{ $participant->name }} 様
+                                        @unless(empty($participant->self_absent))
+                                            <span class="uk-text-danger">(欠)</span>
+                                        @endunless
+                                    </td>
+                                </tr>
+                                @if (isset($participant->vs->name) || isset($participant->bs->name))
+                                    <tr>
+                                        <th>引率スカウト</th>
+                                        {{-- シート番号も必要!! --}}
+                                        <td>
+                                            {{-- ベンチャースカウト --}}
+                                            @if (isset($participant->vs->name))
+                                                VS:{{ $participant->vs->name }} 様
+                                                ({{ $participant->vs->seat_number }})
+                                                @if (empty($participant->vs->self_absent))
+                                                @else
+                                                    <span class="uk-text-danger">(欠)</span>
+                                                @endif
+                                                <br>
+                                            @endif
+
+                                            {{-- ボーイスカウト --}}
+                                            @if (isset($participant->bs->name))
+                                                BS:{{ $participant->bs->name }} 様
+                                                ({{ $participant->bs->seat_number }})
+                                                @if (empty($participant->bs->self_absent))
+                                                @else
+                                                    <span class="uk-text-danger">(欠)</span>
+                                                @endif
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endif
+                                <tr>
+                                    <th>QR</td>
+                                    <td>{!! QrCode::size(150)->generate(url('/s/check_in?id=') . $participant->uuid) !!}</td>
                                 </tr>
                                 <tr>
-                                    <td>QR</td>
-                                    <td>{!! QrCode::size(200)->generate(url('/s/check_in?id=') . $participant->uuid) !!}</td>
-                                </tr>
-                                <tr>
-                                    <td>座席番号</td>
+                                    <th>座席番号</th>
                                     <td>{{ $participant->seat_number }}</td>
                                 </tr>
                                 {{-- <tr>
@@ -64,14 +100,38 @@
                                     <td>{{ $participant->role }}</td>
                                 </tr> --}}
                                 <tr>
-                                    <td>チェックイン</td>
-                                    <td><a href="#modal-self-check-in" uk-toggle
-                                            class=" uk-button uk-button-primary uk-width-1-1@m">チェックイン</a></td>
+                                    <th>チェックイン</th>
+                                    <td>
+                                        @if (empty($participant->checkedin_at))
+                                            <a href="#modal-self-check-in" uk-toggle
+                                                class=" uk-button uk-button-primary uk-width-1-1@m">チェックイン</a>
+                                        @else
+                                            <span class="uk-text-success">チェックイン済み</span>
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>欠席手続</td>
-                                    <td><a href="#modal-self-absent" uk-toggle
-                                            class=" uk-button uk-button-danger uk-width-1-1@m">欠席</a></td>
+                                    <th>欠席手続</th>
+                                    <td>
+                                        @if (empty($participant->checkedin_at))
+                                            <p class="uk-text-default"><a href="#modal-self-absent" uk-toggle
+                                                    class=" uk-button uk-button-danger uk-width-1-1@m">ご本人</a></p>
+                                        @endif
+                                        @if (empty($participant->vs->self_absent) && empty($participant->vs->checkedin_at))
+                                            <p class="uk-text-default"><a href="#modal-vs-absent" uk-toggle
+                                                    class=" uk-button uk-button-danger uk-width-1-1@m">{{ $participant->vs->name }}</a>
+                                            </p>
+                                        @elseif(isset($participant->vs->self_absent))
+                                            {{ $participant->vs->name }} 欠席
+                                        @endif
+                                        @if (empty($participant->bs->self_absent) && empty($participant->bs->checkedin_at))
+                                            <p class="uk-text-default"><a href="#modal-bs-absent" uk-toggle
+                                                    class=" uk-button uk-button-danger uk-width-1-1@m">{{ $participant->bs->name }}</a>
+                                            </p>
+                                        @elseif(isset($participant->bs->self_absent))
+                                            {{ $participant->bs->name }} 欠席
+                                        @endif
+                                    </td>
                                 </tr>
                             </table>
                         </div>
@@ -80,25 +140,81 @@
 
                 <div id="modal-self-check-in" uk-modal>
                     <div class="uk-modal-dialog uk-modal-body">
-                        <h2 class="uk-modal-title">チェックイン</h2>
-                        <p>ご自身でチェックイン(到着手続き)を行います。引率するスカウトも一緒に到着扱いとなります。</p>
+                        <h2 class="uk-modal-title uk-text-primary">チェックイン</h2>
+                        <p>{{ $participant->name }}様ご自身でチェックイン(到着手続き)を行います。<br>
+                            @if (isset($participant->vs->name) || isset($participant->bs->name))
+                                <span class="uk-text-warning">引率するスカウトも一緒に到着扱いとなります。スカウトが揃っているか確認してください。</span>
+                            @endif
+                        </p>
+                        <ul>
+                            @if (isset($participant->vs->name))
+                                <li>VS:{{ $participant->vs->name }}</li>
+                            @endif
+                            @if (isset($participant->bs->name))
+                                <li>BS:{{ $participant->bs->name }}</li>
+                            @endif
+                        </ul>
                         <p class="uk-text-right">
-                            <button class="uk-button uk-button-default uk-modal-close" type="button">キャンセル</button>
-                            <button class="uk-button uk-button-primary" type="button">チェックインする</button>
+                            <button class="uk-button uk-button-default uk-modal-close uk-width-1-1@m"
+                                type="button">キャンセル</button>
+                            <a class="uk-button uk-button-primary uk-width-1-1@m"
+                                href="{{ url('/') }}/self_check_in/?checkin_id={{ $participant->uuid }}">チェックインする</a>
                         </p>
                     </div>
                 </div>
 
                 <div id="modal-self-absent" uk-modal>
                     <div class="uk-modal-dialog uk-modal-body">
-                        <h2 class="uk-modal-title">欠席手続き</h2>
-                        <p>ご自身で欠席手続きを行います。諸事情で参加を取りやめる場合はこちらで手続きをしてください。</p>
+                        <h2 class="uk-modal-title uk-text-danger">欠席手続き</h2>
+                        <p>{{ $participant->name }}様ご自身で欠席手続きを行います。参加を取りやめる場合は<span
+                                class="uk-text-warning">欠席する</span>ボタンをタップしてください</p>
+                        @if (isset($participant->vs->name) || isset($participant->bs->name))
+                            <p class="uk-text-warning">引率スカウトは受付ブースで個別にチェックインを行って下さい。</p>
+                        @endif
                         <p class="uk-text-right">
                             <button class="uk-button uk-button-default uk-modal-close" type="button">キャンセル</button>
-                            <button class="uk-button uk-button-danger" type="button">欠席する</button>
+                            <a class="uk-button uk-button-danger"
+                                href="{{ url('/') }}/self/?absent={{ $participant->uuid }}">欠席する</a>
                         </p>
                     </div>
                 </div>
+
+                {{-- ベンチャー欠席ウィンドウ --}}
+                @if (isset($participant->vs->name))
+                    <div id="modal-vs-absent" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h2 class="uk-modal-title uk-text-danger">欠席手続き</h2>
+                            <p><span
+                                    class="uk-text-danger">{{ $participant->vs->name }}</span>さんの欠席手続きを行います。参加を取りやめる場合は<span
+                                    class="uk-text-warning">欠席する</span>ボタンをタップしてください</p>
+                            <p class="uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close" type="button">キャンセル</button>
+                                <a class="uk-button uk-button-danger"
+                                    href="{{ url('/') }}/self/?absent={{ $participant->vs->uuid }}">欠席する</a>
+                            </p>
+                        </div>
+                    </div>
+                @endif
+                {{-- ベンチャー欠席ウィンドウ --}}
+
+                {{-- ボーイ欠席ウィンドウ --}}
+                @if (isset($participant->bs->name))
+                    <div id="modal-bs-absent" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h2 class="uk-modal-title uk-text-danger">欠席手続き</h2>
+                            <p><span
+                                    class="uk-text-danger">{{ $participant->bs->name }}</span>さんの欠席手続きを行います。参加を取りやめる場合は<span
+                                    class="uk-text-warning">欠席する</span>ボタンをタップしてください</p>
+                            <p class="uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close" type="button">キャンセル</button>
+                                <a class="uk-button uk-button-danger"
+                                    href="{{ url('/') }}/self/?absent={{ $participant->bs->uuid }}">欠席する</a>
+                            </p>
+                        </div>
+                    </div>
+                @endif
+                {{-- ボーイ欠席ウィンドウ --}}
+
 
             </section>
         </div>

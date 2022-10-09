@@ -143,9 +143,14 @@
 <!-- Role Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('role', '役務:') !!}
-    {!! Form::select('role', ['' => '', 'RS' => 'RS', '指導者' => '指導者'], null, [
-        'class' => 'form-control custom-select',
-    ]) !!}
+    {!! Form::select(
+        'role',
+        ['' => '', 'RS' => 'RS', '指導者' => '指導者', 'RS年代の指導者' => 'RS年代の指導者'],
+        null,
+        [
+            'class' => 'form-control custom-select',
+        ],
+    ) !!}
     @error('role')
         <div class="error text-danger">{{ $message }}</div>
     @enderror

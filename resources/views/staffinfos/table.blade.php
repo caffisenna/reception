@@ -38,6 +38,10 @@
                 <td class="uk-text-small">{{ $staffinfo->zip }}<br>{{ $staffinfo->address }}</td>
             </tr>
             <tr>
+                <th>備考</th>
+                <td class="uk-text-small">{{ $staffinfo->memo }}</td>
+            </tr>
+            <tr>
                 <th>チーム</th>
                 <td class="uk-text-small">{{ $staffinfo->team }}</td>
             </tr>

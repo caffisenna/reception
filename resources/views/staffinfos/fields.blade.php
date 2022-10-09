@@ -155,6 +155,15 @@
     @enderror
 </div>
 
+<!-- memo Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('memo', '備考:') !!}
+    {!! Form::textarea('memo', null, ['class' => 'form-control']) !!}
+    @error('memo')
+        <div class="error text-danger">{{ $message }}</div>
+    @enderror
+</div>
+
 <!-- Team Field -->
 {{-- <div class="form-group col-sm-6">
     {!! Form::label('team', '部署:') !!}

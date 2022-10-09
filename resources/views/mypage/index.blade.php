@@ -35,9 +35,11 @@
 
                     <div class="card">
                         <div style="background-color:#115740">
-                            <p class="uk-text-large uk-text-center" style="color:#FFF">100周年記念式典 & レセプション<br>デジタルパス</p>
+                            <p class="uk-text-default uk-text-center" style="color:#FFF">100周年記念式典 & レセプション<br>デジタルパス
+                            </p>
                         </div>
-                        <p class="uk-text-primary uk-text-small">このページをブックマーク、もしくはスクリーンショットを保存して受付でご提示下さい。</p>
+                        <p class="uk-text-primary uk-text-small uk-margin-auto-vertical">
+                            このページをブックマーク、もしくはスクリーンショットを保存して受付でご提示下さい。</p>
                         <div class="card-body p-0">
                             <table class="uk-table uk-table-hover uk-table-striped">
                                 <tr>
@@ -52,22 +54,24 @@
                                     <td>座席番号</td>
                                     <td>{{ $participant->seat_number }}</td>
                                 </tr>
-                                <tr>
+                                {{-- <tr>
                                     <td>所属</td>
                                     <td>{{ $participant->pref }}連盟 @if ($participant->district){{ $participant->district }}地区@endif
-                                        {{ $participant->dan_name }}@if($participant->dan_number){{ $participant->dan_number }}団@endif</td>
+                                        {{ $participant->dan_name }}@if ($participant->dan_number){{ $participant->dan_number }}団@endif</td>
                                 </tr>
                                 <tr>
                                     <td>役務</td>
                                     <td>{{ $participant->role }}</td>
-                                </tr>
+                                </tr> --}}
                                 <tr>
                                     <td>チェックイン</td>
-                                    <td><a href="#modal-self-check-in" uk-toggle class=" uk-button uk-button-primary uk-width-1-1@m">チェックイン</a></td>
+                                    <td><a href="#modal-self-check-in" uk-toggle
+                                            class=" uk-button uk-button-primary uk-width-1-1@m">チェックイン</a></td>
                                 </tr>
                                 <tr>
                                     <td>欠席手続</td>
-                                    <td><a href="#modal-self-absent" uk-toggle class=" uk-button uk-button-danger uk-width-1-1@m">欠席</a></td>
+                                    <td><a href="#modal-self-absent" uk-toggle
+                                            class=" uk-button uk-button-danger uk-width-1-1@m">欠席</a></td>
                                 </tr>
                             </table>
                         </div>

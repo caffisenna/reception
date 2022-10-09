@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $cell_phone
  * @property string $zip
  * @property string $address
+ * @property string $memo
  * @property string $team
  */
 class Staffinfo extends Model
@@ -49,6 +50,7 @@ class Staffinfo extends Model
         'cell_phone',
         'zip',
         'address',
+        'memo',
         'team'
     ];
 
@@ -70,6 +72,7 @@ class Staffinfo extends Model
         'cell_phone' => 'string',
         'zip' => 'string',
         'address' => 'string',
+        'memo' => 'string',
         'team' => 'string'
     ];
 
@@ -79,7 +82,7 @@ class Staffinfo extends Model
      * @var array
      */
     public static $rules = [
-        'birth_day' => 'required',
+        'birth_day' => 'required|date_format:Y-m-d',
         'furigana' => 'required',
         'gender' => 'required',
         'bs_id' => 'required',
@@ -94,6 +97,7 @@ class Staffinfo extends Model
 
     public static $messages= [
         'birth_day.required' => '生年月日を入力して下さい',
+        'birth_day.date_format' => '生年月日をYYYY-mm-ddの形式で入力して下さい',
         'furigana.required' => 'ふりがなを入力してください',
         'gender.required' => '性別を入力してください',
         'bs_id.required' => '登録番号を入力して下さい',

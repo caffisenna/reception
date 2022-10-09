@@ -29,6 +29,7 @@ class CreateStaffinfosTable extends Migration
             $table->string('zip');
             $table->string('address');
             $table->string('team')->nullable();
+            $table->text('memo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

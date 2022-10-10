@@ -41,4 +41,10 @@ Route::prefix('s')->middleware('can:staff')->group(function () {
     Route::get('/check_in/input', [App\Http\Controllers\Check_InController::class, 'input'])->name('input');
     Route::post('/check_in/input', [App\Http\Controllers\Check_InController::class, 'input'])->name('input');
     Route::resource('staffinfos', App\Http\Controllers\StaffinfoController::class);
+    Route::get('/absent/input', [App\Http\Controllers\AbsentController::class, 'input'])->name('input'); // 欠席リスト
+    Route::post('/absent/input', [App\Http\Controllers\AbsentController::class, 'input'])->name('input'); // 欠席リスト検索
+    Route::get('/fever_absent/input', [App\Http\Controllers\AbsentController::class, 'fever'])->name('fever'); // 発熱リスト
+    Route::post('/fever_absent/input', [App\Http\Controllers\AbsentController::class, 'fever'])->name('fever'); // 発熱リスト検索
+    Route::get('/cancel', [App\Http\Controllers\CancelController::class, 'index'])->name('cancel'); // キャンセル処理
+    Route::post('/cancel', [App\Http\Controllers\CancelController::class, 'index'])->name('cancel'); // キャンセルリスト検索
 });

@@ -33,6 +33,24 @@
             <p>チェックイン</p>
         </a>
     </li>
+    <li class="nav-item">
+        <a href="{{ url('/s/absent/input') }}"
+            class="nav-link {{ Request::is('/s/absent*') ? 'active' : '' }}">
+            <p>通常欠席</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ url('/s/fever_absent/input') }}"
+            class="nav-link {{ Request::is('/s/fever_absent*') ? 'active' : '' }}">
+            <p>発熱欠席</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ url('/s/cancel') }}"
+            class="nav-link {{ Request::is('/s/cancel*') ? 'active' : '' }}">
+            <p>取消処理</p>
+        </a>
+    </li>
     <p class="uk-text-warning">情報</p>
     <li class="nav-item">
         <a href="{{ route('staffinfos.index') }}" class="nav-link {{ Request::is('staffinfos*') ? 'active' : '' }}">

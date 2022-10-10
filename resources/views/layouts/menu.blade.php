@@ -16,6 +16,12 @@
             <p>欠席リスト</p>
         </a>
     </li>
+    <li class="nav-item">
+        <a href="{{ url('/admin/cancel') }}"
+            class="nav-link {{ Request::is('/admin/cancel*') ? 'active' : '' }}">
+            <p>取消処理</p>
+        </a>
+    </li>
     <p class="uk-text-warning">情報</p>
     <li class="nav-item">
         <a href="{{ route('admin_staffinfos.index') }}"

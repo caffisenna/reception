@@ -33,6 +33,8 @@ Route::prefix('admin')->middleware('can:admin')->group(function () {
     Route::get('/absent_list', [App\Http\Controllers\ParticipantController::class, 'absent_list'])->name('absent_list'); // 欠席入力リスト
     Route::get('/cancel_check_in/', [App\Http\Controllers\ParticipantController::class, 'cancel_check_in'])->name('cancel_check_in'); // チェックインキャンセル
     Route::get('/cancel_absent/', [App\Http\Controllers\ParticipantController::class, 'cancel_absent'])->name('cancel_absent'); // 欠席キャンセル
+    Route::get('/cancel', [App\Http\Controllers\AdminCancelController::class, 'index'])->name('cancel'); // キャンセル処理
+    Route::post('/cancel', [App\Http\Controllers\AdminCancelController::class, 'index'])->name('cancel'); // キャンセルリスト検索
 });
 
 // スタッフ用

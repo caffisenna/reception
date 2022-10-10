@@ -102,8 +102,9 @@ class Check_InController extends AppBaseController
         // 対象取得(未チェックインを抽出)
         $person = Participant::where('uuid', $uuid)->where('checkedin_at', null)->firstorfail();
         $person->checkedin_at = now();  // 指導者
+        $person->save();
 
-        // 引率スカウトを引っ張る
+        // 引率スカウトの処理
         if ($person->is_represent == "県連代表(4)") {
             $vs = Participant::where('pref', $person->pref)->where('is_represent', '県連代表(5)')->first();
             $bs = Participant::where('pref', $person->pref)->where('is_represent', '県連代表(6)')->first();
@@ -115,15 +116,10 @@ class Check_InController extends AppBaseController
 
             if (empty($bs->self_absent)) {  // 欠席入力があればチェックインの打刻しない
                 $bs->checkedin_at = now();  // BS
+                $vs->save();
+                $bs->save();
             }
         }
-
-        // DB保存
-        $person->save();
-        $vs->save();
-        $bs->save();
-
-
 
         Flash::success($person->name . 'さんのチェックイン処理をしました');
         return back();

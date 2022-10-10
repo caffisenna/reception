@@ -71,9 +71,9 @@
             <tr>
                 <th>氏名</th>
                 <th>県連</th>
-                <th>所属</th>
                 <th>役務</th>
                 <th>座席</th>
+                <th>理由</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -91,10 +91,16 @@
                         </span>
                     </td>
                     <td>{{ $participant->pref }}</td>
-                    <td>{{ $participant->district }} {{ $participant->dan_name }}{{ $participant->dan_number }}
                     </td>
                     <td>{{ $participant->role }}</td>
                     <td>{{ $participant->seat_number }}</td>
+                    <td>
+                        @if ($participant->self_absent == '発熱NG')
+                            <span class="uk-text-danger">{{ $participant->self_absent }}</span>
+                        @else
+                            {{ $participant->self_absent }}
+                        @endif
+                    </td>
                     <td>
                         <div class='btn-group'>
                             <a href="{{ url('/admin/cancel_absent') . "/?uuid=$participant->uuid" }}" uk-toggle

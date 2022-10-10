@@ -244,4 +244,13 @@ class ParticipantController extends AppBaseController
 
         return back();
     }
+
+    public function not_checked_in(Request $request)
+    {
+        $participants = Participant::where('checkedin_at', NULL)
+            ->paginate(100);
+
+        return view('participants.checked_in')
+            ->with('participants', $participants);
+    }
 }

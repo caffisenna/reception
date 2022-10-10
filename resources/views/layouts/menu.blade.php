@@ -11,6 +11,11 @@
         </a>
     </li>
     <li class="nav-item">
+        <a href="{{ url('/admin/not_checked_in') }}" class="nav-link {{ Request::is('/admin/not_checked_in') ? 'active' : '' }}">
+            <p>未チェックイン</p>
+        </a>
+    </li>
+    <li class="nav-item">
         <a href="{{ url('/admin/absent_list') }}"
             class="nav-link {{ Request::is('/admin/absent_list') ? 'active' : '' }}">
             <p>欠席リスト</p>

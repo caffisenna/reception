@@ -61,7 +61,32 @@ class Check_InController extends AppBaseController
         if (isset($request->uuid)) {
             $participant = Participant::where('uuid', $request->uuid)->firstorfail();
             $participant->checkedin_at = now();
+
+            // 引率スカウトの取得
+            if ($participant->is_represent == "県連代表(4)") {
+                $vs = Participant::where('pref', $participant->pref)->where('is_represent', '県連代表(5)')->select('id', 'name')->first();
+                $bs = Participant::where('pref', $participant->pref)->where('is_represent', '県連代表(6)')->select('id', 'name')->first();
+            }
+
+            // 打刻
+            if (isset($vs)) {
+                $vs->checkedin_at = $participant->checkedin_at;
+            }
+
+            if (isset($bs)) {
+                $bs->checkedin_at = $participant->checkedin_at;
+            }
+            // 打刻
+
+            // DB保存
             $participant->save();
+            $vs->save();
+            $bs->save();
+
+
+
+
+
             Flash::success($participant->name . "さんのチェックイン完了");
             return view('check_in.input')->with('participant', $participant);
         }
@@ -95,7 +120,7 @@ class Check_InController extends AppBaseController
 
 
 
-        Flash::success($person->name.'さんのチェックイン処理をしました');
+        Flash::success($person->name . 'さんのチェックイン処理をしました');
         return back();
     }
 }

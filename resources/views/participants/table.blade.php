@@ -26,7 +26,19 @@
                     <td>{{ $participant->pref }}</td>
                     <td>{{ $participant->district }} {{ $participant->dan_name }}{{ $participant->dan_number }}
                     </td>
-                    <td>{{ $participant->role }}</td>
+                    <td>
+                        @if (!empty($participant->is_proxy))
+                            @if ($participant->is_represent == '県連代表(1)')
+                                <span class="uk-text-warning">理事長代理: </span>{{ $participant->is_proxy }}
+                            @elseif($participant->is_represent == '県連代表(2)')
+                                <span class="uk-text-warning">理事長代理: </span>{{ $participant->is_proxy }}
+                            @elseif($participant->is_represent == '県連代表(3)')
+                                <span class="uk-text-warning">理事長代理: </span>{{ $participant->is_proxy }}
+                            @endif
+                        @else
+                            {{ $participant->role }}
+                        @endif
+                    </td>
                     <td>{{ $participant->seat_number }}</td>
                     <td width="120">
                         {!! Form::open(['route' => ['participants.destroy', $participant->id], 'method' => 'delete']) !!}
@@ -35,7 +47,11 @@
                                 class='btn btn-default btn-xs'>
                                 <span uk-icon="file-edit"></span>
                             </a>
-                            {!! Form::button('<span uk-icon="trash"></span>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('本当に削除しますか?')"]) !!}
+                            {!! Form::button('<span uk-icon="trash"></span>', [
+                                'type' => 'submit',
+                                'class' => 'btn btn-danger btn-xs',
+                                'onclick' => "return confirm('本当に削除しますか?')",
+                            ]) !!}
                         </div>
                         {!! Form::close() !!}
                     </td>

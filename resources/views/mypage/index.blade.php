@@ -121,14 +121,14 @@
                                         @elseif(isset($participant->self_absent))
                                             {{ $participant->name }}<br>
                                         @endif
-                                        @if (empty($participant->vs->self_absent) && empty($participant->vs->checkedin_at))
+                                        @if (isset($participant->vs->name) && empty($participant->vs->self_absent) && empty($participant->vs->checkedin_at))
                                             <p class="uk-text-default"><a href="#modal-vs-absent" uk-toggle
                                                     class=" uk-button uk-button-danger uk-width-1-1@m">{{ $participant->vs->name }}</a>
                                             </p>
                                         @elseif(isset($participant->vs->self_absent))
                                             {{ $participant->vs->name }}<br>
                                         @endif
-                                        @if (empty($participant->bs->self_absent) && empty($participant->bs->checkedin_at))
+                                        @if (isset($participant->bs->name) && empty($participant->bs->self_absent) && empty($participant->bs->checkedin_at))
                                             <p class="uk-text-default"><a href="#modal-bs-absent" uk-toggle
                                                     class=" uk-button uk-button-danger uk-width-1-1@m">{{ $participant->bs->name }}</a>
                                             </p>

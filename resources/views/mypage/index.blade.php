@@ -108,7 +108,7 @@
                                         @elseif(isset($participant->self_absent))
                                             <span class="uk-text-success">欠席入力済み</span>
                                         @else
-                                            <span class="uk-text-success">チェックイン済み</span>
+                                            <span class="uk-text-success"><span uk-icon="icon: check"></span>チェックイン済み</span>
                                         @endif
                                     </td>
                                 </tr>

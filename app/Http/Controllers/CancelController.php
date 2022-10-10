@@ -20,11 +20,6 @@ class CancelController extends AppBaseController
      */
     public function index(Request $request)
     {
-        //ここから処理を書く
-        // dd($request);  $request['furigana']で検索キーを受ける
-        // cat = checkin => チェックイン処理
-        // cat = absent => 欠席処理
-
 
         if (isset($request['uuid'])) { // 削除リクエストの処理
             $uuid = $request['uuid'];
@@ -50,52 +45,4 @@ class CancelController extends AppBaseController
                 ->with('participants', $participants);
         }
     }
-
-    // public function input(Request $request)
-    // {
-    //     // dd($request['uuid']); uuidが取れる
-    //     if (isset($request->furigana)) {
-    //         $participants = Participant::where('furigana', 'like', "$request->furigana%")
-    //             ->where('checkedin_at', null)
-    //             ->where('self_absent', null)
-    //             ->get();
-
-    //         return view('absent.input')->with('participants', $participants);
-    //     }
-
-    //     // 手入力チェックインの場合
-    //     if (isset($request->uuid)) {
-    //         $participant = Participant::where('uuid', $request->uuid)->firstorfail();
-    //         $participant->self_absent = 'スタッフ入力';
-    //         $participant->save();
-    //         Flash::success($participant->name . "さんの欠席処理が完了しました");
-    //         return view('absent.input')->with('participant', $participant);
-    //     }
-
-    //     return view('absent.input');
-    // }
-
-    // public function fever(Request $request)
-    // {
-    //     // dd($request['uuid']); uuidが取れる
-    //     if (isset($request->furigana)) {
-    //         $participants = Participant::where('furigana', 'like', "$request->furigana%")
-    //             ->where('checkedin_at', null)
-    //             ->where('self_absent', null)
-    //             ->get();
-
-    //         return view('fever_absent.input')->with('participants', $participants);
-    //     }
-
-    //     // 手入力チェックインの場合
-    //     if (isset($request->uuid)) {
-    //         $participant = Participant::where('uuid', $request->uuid)->firstorfail();
-    //         $participant->self_absent = '発熱NG';
-    //         $participant->save();
-    //         Flash::success($participant->name . "さんの発熱欠席処理が完了しました");
-    //         return view('fever_absent.input')->with('participant', $participant);
-    //     }
-
-    //     return view('fever_absent.input');
-    // }
 }

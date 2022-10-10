@@ -102,9 +102,11 @@
                                 <tr>
                                     <th>チェックイン</th>
                                     <td>
-                                        @if (empty($participant->checkedin_at))
+                                        @if (empty($participant->checkedin_at) && empty($participant->self_absent))
                                             <a href="#modal-self-check-in" uk-toggle
                                                 class=" uk-button uk-button-primary uk-width-1-1@m">チェックイン</a>
+                                        @elseif(isset($participant->self_absent))
+                                            <span class="uk-text-success">欠席入力済み</span>
                                         @else
                                             <span class="uk-text-success">チェックイン済み</span>
                                         @endif
@@ -145,14 +147,15 @@
                         <h2 class="uk-modal-title uk-text-primary">チェックイン</h2>
                         <p>{{ $participant->name }}様ご自身でチェックイン(到着手続き)を行います。<br>
                             @if (isset($participant->vs->name) || isset($participant->bs->name))
-                                <span class="uk-text-warning">引率するスカウトも一緒に到着扱いとなります。スカウトが揃っているか確認してください。</span>
+                                <span
+                                    class="uk-text-warning">引率するスカウトも一緒に到着扱いとなります。スカウトが揃っているか確認してください。(欠席入力されていれば不要です)</span>
                             @endif
                         </p>
                         <ul>
-                            @if (isset($participant->vs->name))
+                            @if (isset($participant->vs->name) && empty($participant->vs->self_absent))
                                 <li>VS:{{ $participant->vs->name }}</li>
                             @endif
-                            @if (isset($participant->bs->name))
+                            @if (isset($participant->bs->name) && empty($participant->bs->self_absent))
                                 <li>BS:{{ $participant->bs->name }}</li>
                             @endif
                         </ul>

@@ -110,8 +110,13 @@ class Check_InController extends AppBaseController
 
         // チェックイン処理
         $person->checkedin_at = now();  // 指導者
-        $vs->checkedin_at = now();      // VS
-        $bs->checkedin_at = now();      // BS
+        if (empty($vs->self_absent)) {  // 欠席入力があればチェックインの打刻しない
+            $vs->checkedin_at = now();  // VS
+        }
+
+        if (empty($bs->self_absent)) {  // 欠席入力があればチェックインの打刻しない
+            $bs->checkedin_at = now();  // BS
+        }
 
         // DB保存
         $person->save();

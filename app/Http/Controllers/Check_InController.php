@@ -61,31 +61,24 @@ class Check_InController extends AppBaseController
         if (isset($request->uuid)) {
             $participant = Participant::where('uuid', $request->uuid)->firstorfail();
             $participant->checkedin_at = now();
+            $participant->save();
 
             // 引率スカウトの取得
             if ($participant->is_represent == "県連代表(4)") {
                 $vs = Participant::where('pref', $participant->pref)->where('is_represent', '県連代表(5)')->select('id', 'name')->first();
                 $bs = Participant::where('pref', $participant->pref)->where('is_represent', '県連代表(6)')->select('id', 'name')->first();
+
+                // 打刻
+                if (isset($vs)) {
+                    $vs->checkedin_at = $participant->checkedin_at;
+                    $vs->save();
+                }
+
+                if (isset($bs)) {
+                    $bs->checkedin_at = $participant->checkedin_at;
+                    $bs->save();
+                }
             }
-
-            // 打刻
-            if (isset($vs)) {
-                $vs->checkedin_at = $participant->checkedin_at;
-            }
-
-            if (isset($bs)) {
-                $bs->checkedin_at = $participant->checkedin_at;
-            }
-            // 打刻
-
-            // DB保存
-            $participant->save();
-            $vs->save();
-            $bs->save();
-
-
-
-
 
             Flash::success($participant->name . "さんのチェックイン完了");
             return view('check_in.input')->with('participant', $participant);
@@ -112,11 +105,11 @@ class Check_InController extends AppBaseController
             // チェックイン処理
             if (empty($vs->self_absent)) {  // 欠席入力があればチェックインの打刻しない
                 $vs->checkedin_at = now();  // VS
+                $vs->save();
             }
 
             if (empty($bs->self_absent)) {  // 欠席入力があればチェックインの打刻しない
                 $bs->checkedin_at = now();  // BS
-                $vs->save();
                 $bs->save();
             }
         }

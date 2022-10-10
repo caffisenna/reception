@@ -5,7 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>チェックイン済み</h1>
+
+                    @if (url()->current() == url('/admin/not_checked_in'))
+                        <h1>未チェックイン</h1>
+                    @else
+                        <h1>チェックイン済み</h1>
+                    @endif
                 </div>
                 <div class="col-sm-6">
                 </div>

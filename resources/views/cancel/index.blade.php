@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" type="text/css" href="{{ url('/datatables/jquery.dataTables.css') }}">
     <script type="text/javascript" charset="utf8" src="{{ url('/datatables/jquery.dataTables.js') }}"></script>
     <script src="{{ url('/datatables/dataTables.fixedHeader.min.js') }}"></script>
-    <link rel="stylesheet" type="text/css" href="{{ url('/datatables/jquery.dataTables.css') }}">
     <script type="text/javascript">
         $(document).ready(function() {
             // Setup - add a text input to each footer cell
@@ -76,7 +76,7 @@
             @include('flash::message')
             <div class="card-body p-0">
                 @if (isset($participants))
-                    <table class="uk-table uk-table-justify uk-table-striped uk-table-small" id="cancel_table">
+                    <table class="uk-table uk-table-small" id="cancel_table">
                         <thead>
                             <tr>
                                 <th>氏名</th>

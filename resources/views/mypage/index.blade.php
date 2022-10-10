@@ -113,23 +113,25 @@
                                 <tr>
                                     <th>欠席手続</th>
                                     <td>
-                                        @if (empty($participant->checkedin_at))
+                                        @if (empty($participant->checkedin_at) && empty($participant->self_absent))
                                             <p class="uk-text-default"><a href="#modal-self-absent" uk-toggle
                                                     class=" uk-button uk-button-danger uk-width-1-1@m">ご本人</a></p>
+                                        @elseif(isset($participant->self_absent))
+                                            {{ $participant->name }}<br>
                                         @endif
                                         @if (empty($participant->vs->self_absent) && empty($participant->vs->checkedin_at))
                                             <p class="uk-text-default"><a href="#modal-vs-absent" uk-toggle
                                                     class=" uk-button uk-button-danger uk-width-1-1@m">{{ $participant->vs->name }}</a>
                                             </p>
                                         @elseif(isset($participant->vs->self_absent))
-                                            {{ $participant->vs->name }} 欠席
+                                            {{ $participant->vs->name }}<br>
                                         @endif
                                         @if (empty($participant->bs->self_absent) && empty($participant->bs->checkedin_at))
                                             <p class="uk-text-default"><a href="#modal-bs-absent" uk-toggle
                                                     class=" uk-button uk-button-danger uk-width-1-1@m">{{ $participant->bs->name }}</a>
                                             </p>
                                         @elseif(isset($participant->bs->self_absent))
-                                            {{ $participant->bs->name }} 欠席
+                                            {{ $participant->bs->name }}
                                         @endif
                                     </td>
                                 </tr>

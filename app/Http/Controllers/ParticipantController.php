@@ -190,8 +190,29 @@ class ParticipantController extends AppBaseController
         $participants = Participant::where('checkedin_at', '<>', NULL)
             ->paginate(100);
 
-        return view('participants.index')
+        return view('participants.checked_in')
             ->with('participants', $participants);
+    }
+
+    public function cancel_check_in(Request $request)
+    {
+        $uuid = $request['uuid'];
+        $participant = Participant::where('uuid', $uuid)->firstorfail();
+
+        if (empty($participant)) {
+            Flash::error('Participant not found');
+
+            return redirect(route('participants.index'));
+        }
+
+        if (isset($participant)) {
+            $participant->checkedin_at = NULL;
+            $participant->save();
+        }
+
+        Flash::success($participant->name . 'のチェックインを取り消しました');
+
+        return back();
     }
 
     public function absent_list(Request $request)
@@ -199,7 +220,28 @@ class ParticipantController extends AppBaseController
         $participants = Participant::where('self_absent', '<>', NULL)
             ->paginate(100);
 
-        return view('participants.index')
+        return view('participants.absent_list')
             ->with('participants', $participants);
+    }
+
+    public function cancel_absent(Request $request)
+    {
+        $uuid = $request['uuid'];
+        $participant = Participant::where('uuid', $uuid)->firstorfail();
+
+        if (empty($participant)) {
+            Flash::error('Participant not found');
+
+            return redirect(route('participants.index'));
+        }
+
+        if (isset($participant)) {
+            $participant->self_absent = NULL;
+            $participant->save();
+        }
+
+        Flash::success($participant->name . 'の欠席入力を取り消しました');
+
+        return back();
     }
 }

@@ -27,10 +27,12 @@ Route::get('/self_check_in', [App\Http\Controllers\Check_InController::class, 's
 // 管理ユーザ用
 Route::prefix('admin')->middleware('can:admin')->group(function () {
     Route::resource('participants', App\Http\Controllers\ParticipantController::class);
-    Route::post('participants', [App\Http\Controllers\ParticipantController::class,'search'])->name('search');
+    Route::post('participants', [App\Http\Controllers\ParticipantController::class, 'search'])->name('search');
     Route::resource('admin_staffinfos', App\Http\Controllers\AdminStaffinfoController::class);
     Route::get('/checked_in', [App\Http\Controllers\ParticipantController::class, 'checked_in'])->name('checked_in'); // チェックイン済みリスト
     Route::get('/absent_list', [App\Http\Controllers\ParticipantController::class, 'absent_list'])->name('absent_list'); // 欠席入力リスト
+    Route::get('/cancel_check_in/', [App\Http\Controllers\ParticipantController::class, 'cancel_check_in'])->name('cancel_check_in'); // チェックインキャンセル
+    Route::get('/cancel_absent/', [App\Http\Controllers\ParticipantController::class, 'cancel_absent'])->name('cancel_absent'); // 欠席キャンセル
 });
 
 // スタッフ用

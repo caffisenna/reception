@@ -20,11 +20,11 @@
                         <tr>
                             <th>氏名</th>
                             <th>所属</th>
-                            <th>欠席</th>
+                            <th>発熱</th>
                         </tr>
                         @foreach ($participants as $participant)
                             <tr class="uk-text-small">
-                                <td>{{ $participant->name }}({{ $participant->furigana }})</td>
+                                <td>{{ $participant->name }}<br>({{ $participant->furigana }})</td>
                                 <td>{{ $participant->pref }}</td>
                                 <td><a href="{{ url('/s/fever_absent/input?uuid=') . $participant->uuid }}"
                                         class="uk-button uk-button-danger uk-button-small"

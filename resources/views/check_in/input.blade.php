@@ -40,7 +40,7 @@
                                 <td>{{ $participant->pref }}</td>
                                 <td><a href="{{ url('/s/check_in/input?uuid=') . $participant->uuid }}"
                                         class="uk-button uk-button-primary uk-button-small"
-                                        onclick="return confirm('チェックインしますか?')"><span uk-icon="sign-in"></span></a></td>
+                                        onclick="return confirm('{{ $participant->name }}さんをチェックインしますか?')"><span uk-icon="sign-in"></span></a></td>
                             </tr>
                         @endforeach
                     </table>

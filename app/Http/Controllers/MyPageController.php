@@ -46,7 +46,7 @@ class MyPageController extends AppBaseController
         // $request['absent'] requestでUUIDが入ってくる
         $uuid = $request['absent'];
         $scout = Participant::where('uuid',$uuid)->firstorfail();
-        $scout->self_absent = '指導者入力';
+        $scout->self_absent = '自己入力';
         $scout->save();
 
         Flash::success($scout->name.'さんの欠席処理をしました');

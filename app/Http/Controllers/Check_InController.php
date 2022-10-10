@@ -101,21 +101,21 @@ class Check_InController extends AppBaseController
 
         // 対象取得(未チェックインを抽出)
         $person = Participant::where('uuid', $uuid)->where('checkedin_at', null)->firstorfail();
+        $person->checkedin_at = now();  // 指導者
 
         // 引率スカウトを引っ張る
         if ($person->is_represent == "県連代表(4)") {
             $vs = Participant::where('pref', $person->pref)->where('is_represent', '県連代表(5)')->first();
             $bs = Participant::where('pref', $person->pref)->where('is_represent', '県連代表(6)')->first();
-        }
 
-        // チェックイン処理
-        $person->checkedin_at = now();  // 指導者
-        if (empty($vs->self_absent)) {  // 欠席入力があればチェックインの打刻しない
-            $vs->checkedin_at = now();  // VS
-        }
+            // チェックイン処理
+            if (empty($vs->self_absent)) {  // 欠席入力があればチェックインの打刻しない
+                $vs->checkedin_at = now();  // VS
+            }
 
-        if (empty($bs->self_absent)) {  // 欠席入力があればチェックインの打刻しない
-            $bs->checkedin_at = now();  // BS
+            if (empty($bs->self_absent)) {  // 欠席入力があればチェックインの打刻しない
+                $bs->checkedin_at = now();  // BS
+            }
         }
 
         // DB保存

@@ -20,8 +20,8 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
-    <div class="card">
+<body class="uk-container-xsmall">
+    <div class="">
         <div style="background-color:#115740">
             <p class="uk-text-default uk-text-center uk-margin-auto-vertical" style="color:#FFF">100周年記念式典 &
                 レセプション<br>デジタルパス

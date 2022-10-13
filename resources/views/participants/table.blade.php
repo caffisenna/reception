@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="uk-table uk-table-divider uk-table-hover" id="participants-table">
+    <table class="uk-table uk-table-divider uk-table-hover uk-table-responsive" id="participants-table">
         <thead>
             <tr>
                 <th>県連</th>

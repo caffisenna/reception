@@ -25,7 +25,12 @@ class UpdateParticipantRequest extends FormRequest
     public function rules()
     {
         $rules = Participant::$rules;
-        
+
         return $rules;
+    }
+
+    public function messages()
+    {
+        return Participant::$messages;
     }
 }

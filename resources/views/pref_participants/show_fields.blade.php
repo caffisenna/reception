@@ -13,7 +13,7 @@
     </tr>
     <tr>
         <td>所属</td>
-        <td>{{ $participant->district }} {{ $participant->dan_name }}</td>
+        <td>{{ $participant->district }} {{ $participant->dan_name }} {{ $participant->dan_number }}</td>
     </tr>
     <tr>
         <td>役務</td>

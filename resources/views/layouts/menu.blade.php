@@ -70,6 +70,15 @@
     </li>
 @endif
 
+@if (auth()->user()->is_pref)
+<p class="uk-text-warning">参加者</p>
+    <li class="nav-item">
+        {{-- <a href="{{ route('participants.index') }}" class="nav-link {{ Request::is('participants*') ? 'active' : '' }}"> --}}
+            <a href="{{ url('pref/pref_participants') }}" class="nav-link {{ Request::is('pref_participants*') ? 'active' : '' }}">
+            <p>県連代表</p>
+        </a>
+    </li>
+@endif
 
 
 {{-- <p class="uk-text-warning">マイページ</p>

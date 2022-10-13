@@ -42,7 +42,8 @@ class Participant extends Model
         'pref',
         'district',
         'dan_name',
-        'dan_number',
+        // 'dan_number',
+        'is_proxy',
         'role',
         'email',
         'phone',
@@ -62,7 +63,7 @@ class Participant extends Model
         'pref' => 'string',
         'district' => 'string',
         'dan_name' => 'string',
-        'dan_number' => 'string',
+        // 'dan_number' => 'string',
         'role' => 'string',
         'email' => 'string',
         'phone' => 'string',
@@ -77,8 +78,14 @@ class Participant extends Model
     public static $rules = [
         'name' => 'required',
         'furigana' => 'required',
-        'pref' => 'required'
+        'pref' => 'required',
+        'email' => 'required'
     ];
 
-
+    public static $messages = [
+        'name.required' => '氏名を入力して下さい',
+        'furigana.required' => 'ふりがなを入力して下さい',
+        'pref.required' => '県連盟を入力して下さい',
+        'email.required' => 'emailを入力して下さい',
+    ];
 }

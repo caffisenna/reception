@@ -51,3 +51,8 @@ Route::prefix('s')->middleware('can:staff')->group(function () {
     Route::get('/cancel', [App\Http\Controllers\CancelController::class, 'index'])->name('cancel'); // キャンセル処理
     Route::post('/cancel', [App\Http\Controllers\CancelController::class, 'index'])->name('cancel'); // キャンセルリスト検索
 });
+
+// 県連用
+Route::prefix('pref')->middleware('can:pref')->group(function () {
+    Route::resource('pref_participants', App\Http\Controllers\PrefParticipantController::class);
+});

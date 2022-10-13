@@ -7,6 +7,7 @@
                 <div class="col-sm-6">
                     <h1>参加者</h1>
                 </div>
+                @if(Auth::user()->is_pref == NULL)
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right" href="{{ route('participants.create') }}">
                         新規追加
@@ -70,6 +71,7 @@
                     {!! Form::submit('県で検索', ['class' => 'uk-button uk-button-primary']) !!}
                     {{ Form::close() }}
                 </div>
+                @endif
             </div>
         </div>
     </section>

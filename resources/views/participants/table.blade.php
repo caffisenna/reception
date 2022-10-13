@@ -1,11 +1,11 @@
 <div class="table-responsive">
-    <table class="table" id="participants-table">
+    <table class="uk-table uk-table-divider uk-table-hover" id="participants-table">
         <thead>
             <tr>
-                <th>氏名</th>
                 <th>県連</th>
-                <th>所属</th>
                 <th>役務</th>
+                <th>代理役務</th>
+                <th>氏名</th>
                 <th>座席</th>
                 <th>操作</th>
             </tr>
@@ -13,6 +13,37 @@
         <tbody>
             @foreach ($participants as $participant)
                 <tr>
+                    <td>{{ $participant->pref }}</td>
+                    <td>
+                        @switch($participant->is_represent)
+                            @case('県連代表(1)')
+                                理事長
+                            @break
+
+                            @case('県連代表(2)')
+                                県コミッショナー
+                            @break
+
+                            @case('県連代表(3)')
+                                事務局長
+                            @break
+
+                            @case('県連代表(4)')
+                                引率指導者
+                            @break
+
+                            @case('県連代表(5)')
+                                VSスカウト
+                            @break
+
+                            @case('県連代表(6)')
+                                BSスカウト
+                            @break
+
+                            @default
+                        @endswitch
+                    </td>
+                    <td>{{ $participant->is_proxy }}</td>
                     <td><a href="{{ route('participants.show', [$participant->id]) }}">{{ $participant->name }}</a>
                         <span class="uk-text-warning">
                             @if (isset($participant->vs))
@@ -22,22 +53,6 @@
                                 <br>BS:{{ $participant->bs->name }}
                             @endif
                         </span>
-                    </td>
-                    <td>{{ $participant->pref }}</td>
-                    <td>{{ $participant->district }} {{ $participant->dan_name }}{{ $participant->dan_number }}
-                    </td>
-                    <td>
-                        @if (!empty($participant->is_proxy))
-                            @if ($participant->is_represent == '県連代表(1)')
-                                <span class="uk-text-warning">理事長代理: </span>{{ $participant->is_proxy }}
-                            @elseif($participant->is_represent == '県連代表(2)')
-                                <span class="uk-text-warning">理事長代理: </span>{{ $participant->is_proxy }}
-                            @elseif($participant->is_represent == '県連代表(3)')
-                                <span class="uk-text-warning">理事長代理: </span>{{ $participant->is_proxy }}
-                            @endif
-                        @else
-                            {{ $participant->role }}
-                        @endif
                     </td>
                     <td>{{ $participant->seat_number }}</td>
                     <td width="120">

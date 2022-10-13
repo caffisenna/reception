@@ -18,6 +18,12 @@
     <script src="{{ url('js/uikit.min.js') }}"></script>
     <script src="{{ url('js/uikit-icons.min.js') }}"></script>
 
+    <!-- iOS用 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Android用 -->
+    <meta name="mobile-web-app-capable" content="yes">
+
 
 </head>
 
@@ -108,7 +114,8 @@
                                         @elseif(isset($participant->self_absent))
                                             <span class="uk-text-success">欠席入力済み</span>
                                         @else
-                                            <span class="uk-text-success"><span uk-icon="icon: check"></span>チェックイン済み</span>
+                                            <span class="uk-text-success"><span
+                                                    uk-icon="icon: check"></span>チェックイン済み</span>
                                         @endif
                                     </td>
                                 </tr>
@@ -121,14 +128,18 @@
                                         @elseif(isset($participant->self_absent))
                                             {{ $participant->name }}<br>
                                         @endif
-                                        @if (isset($participant->vs->name) && empty($participant->vs->self_absent) && empty($participant->vs->checkedin_at))
+                                        @if (isset($participant->vs->name) &&
+                                            empty($participant->vs->self_absent) &&
+                                            empty($participant->vs->checkedin_at))
                                             <p class="uk-text-default"><a href="#modal-vs-absent" uk-toggle
                                                     class=" uk-button uk-button-danger uk-width-1-1@m">{{ $participant->vs->name }}</a>
                                             </p>
                                         @elseif(isset($participant->vs->self_absent))
                                             {{ $participant->vs->name }}<br>
                                         @endif
-                                        @if (isset($participant->bs->name) && empty($participant->bs->self_absent) && empty($participant->bs->checkedin_at))
+                                        @if (isset($participant->bs->name) &&
+                                            empty($participant->bs->self_absent) &&
+                                            empty($participant->bs->checkedin_at))
                                             <p class="uk-text-default"><a href="#modal-bs-absent" uk-toggle
                                                     class=" uk-button uk-button-danger uk-width-1-1@m">{{ $participant->bs->name }}</a>
                                             </p>

@@ -33,6 +33,11 @@
     <script src="{{ url('js/uikit-icons.min.js') }}"></script>
 
     @stack('page_css')
+    <!-- iOS用 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Android用 -->
+    <meta name="mobile-web-app-capable" content="yes">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -42,7 +47,8 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><span uk-icon="menu"></span></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><span
+                            uk-icon="menu"></span></a>
                 </li>
             </ul>
 
@@ -70,8 +76,7 @@
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 ログアウト
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                class="d-none">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </li>

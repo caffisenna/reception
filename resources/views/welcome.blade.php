@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- UIkit CSS -->
-    <link rel="stylesheet" href="{{ url('/uikit/uikit.min.css') }}" />
+    <link rel="stylesheet" href="{{ url('uikit/uikit.min.css') }}" />
 
     <!-- UIkit JS -->
-    <script src="{{ url('/uikit/uikit.min.js') }}"></script>
-    <script src="{{ url('/uikit/uikit-icons.min.js') }}"></script>
+    <script src="{{ url('uikit/uikit.min.js') }}"></script>
+    <script src="{{ url('uikit/uikit-icons.min.js') }}"></script>
     <title>受付システム</title>
 </head>
 

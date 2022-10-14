@@ -24,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        URL::forceRootUrl(Config::get('app.url')); // これで .envに書いてあるAPP_URLを強制
     }
 }

@@ -16,6 +16,7 @@
   - 検温NG処理
 - スタッフ情報管理
   - スタッフログイン機能
+- [隣接シート特定機能](https://colab.research.google.com/drive/1sQGFqa_sSCydO8O_p3htjDGU53wUJ8K6?usp=sharing)
 
 ## Requirements
 - Laravel8 Famework

@@ -11,7 +11,8 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{ url('/admin/not_checked_in') }}" class="nav-link {{ Request::is('/admin/not_checked_in') ? 'active' : '' }}">
+        <a href="{{ url('/admin/not_checked_in') }}"
+            class="nav-link {{ Request::is('/admin/not_checked_in') ? 'active' : '' }}">
             <p>未チェックイン</p>
         </a>
     </li>
@@ -22,10 +23,12 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{ url('/admin/cancel') }}"
-            class="nav-link {{ Request::is('/admin/cancel*') ? 'active' : '' }}">
+        <a href="{{ url('/admin/cancel') }}" class="nav-link {{ Request::is('/admin/cancel*') ? 'active' : '' }}">
             <p>取消処理</p>
         </a>
+    </li>
+    <li class="nav-item"><a href="https://colab.research.google.com/drive/1sQGFqa_sSCydO8O_p3htjDGU53wUJ8K6?usp=sharing"
+            class="nav-link" target="_blank">隣接シート特定<span uk-icon="icon: google"></span></a>
     </li>
     <p class="uk-text-warning">情報</p>
     <li class="nav-item">
@@ -45,8 +48,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{ url('/s/absent/input') }}"
-            class="nav-link {{ Request::is('/s/absent*') ? 'active' : '' }}">
+        <a href="{{ url('/s/absent/input') }}" class="nav-link {{ Request::is('/s/absent*') ? 'active' : '' }}">
             <p>通常欠席</p>
         </a>
     </li>
@@ -57,8 +59,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a href="{{ url('/s/cancel') }}"
-            class="nav-link {{ Request::is('/s/cancel*') ? 'active' : '' }}">
+        <a href="{{ url('/s/cancel') }}" class="nav-link {{ Request::is('/s/cancel*') ? 'active' : '' }}">
             <p>取消処理</p>
         </a>
     </li>
@@ -71,10 +72,11 @@
 @endif
 
 @if (auth()->user()->is_pref)
-<p class="uk-text-warning">参加者</p>
+    <p class="uk-text-warning">参加者</p>
     <li class="nav-item">
         {{-- <a href="{{ route('participants.index') }}" class="nav-link {{ Request::is('participants*') ? 'active' : '' }}"> --}}
-            <a href="{{ url('pref/pref_participants') }}" class="nav-link {{ Request::is('pref_participants*') ? 'active' : '' }}">
+        <a href="{{ url('pref/pref_participants') }}"
+            class="nav-link {{ Request::is('pref_participants*') ? 'active' : '' }}">
             <p>県連代表</p>
         </a>
     </li>

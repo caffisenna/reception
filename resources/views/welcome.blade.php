@@ -16,7 +16,7 @@
 <body class="antialiased">
     <div class="uk-container uk-container-large">
         <button class="uk-button uk-button-primary uk-button-large uk-align-center uk-margin-large-top"
-            onclick="location.href='{{ url('/login') }}'"><span uk-icon="sign-in"></span>LOGIN</button>
+            onclick="location.href='{{ url('/login') }}'"><span uk-icon="sign-in"></span>ログイン</button>
     </div>
     <footer class="main-footer uk-position-bottom" style="background-color:#115740; color:#fff">
         <p class="uk-text-small uk-text-center">100周年記念式典部会<br>

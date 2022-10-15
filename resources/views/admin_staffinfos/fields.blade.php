@@ -1,6 +1,6 @@
 <table class=" uk-table uk-table-divider uk-table-hover">
     <tr>
-        <td>氏名</td>
+        <td>氏名1</td>
         <td>{{ $staffinfo->user->name }}</td>
     </tr>
     <tr>

@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::Redirect('/register','/',301);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/mypage', [App\Http\Controllers\MyPageController::class, 'index'])->name('mypage');
 Route::get('/self', [App\Http\Controllers\MyPageController::class, 'self_absent'])->name('self_absent'); // 自己欠席入力

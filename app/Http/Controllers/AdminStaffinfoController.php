@@ -95,7 +95,8 @@ class AdminStaffinfoController extends AppBaseController
      */
     public function edit($id)
     {
-        $staffinfo = $this->staffinfoRepository->find($id);
+        // 氏名を取得するのにUserをwithで取る
+        $staffinfo = Staffinfo::where('id',$id)->with('user')->first();
 
         if (empty($staffinfo)) {
             Flash::error('スタッフ情報が見つかりません');

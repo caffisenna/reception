@@ -31,6 +31,7 @@
         <div class=" uk-margin">
             <p class="uk-margin-medium uk-text-primary uk-text-small uk-margin-auto-vertical">
                 ★このページをブックマーク、もしくはスクリーンショットを保存して受付でご提示下さい。</p>
+            <p class="uk-txt-danger">軽微の関係で再入場はできません!</p>
         </div>
         <div class="card-body p-0">
             <table class="uk-table uk-table-hover uk-table-striped">

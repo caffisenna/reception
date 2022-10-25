@@ -25,6 +25,7 @@
     <style>
         .swiper {
             height: 150px;
+            width: 300px;
         }
     </style>
 </head>
@@ -230,7 +231,8 @@
     <script>
         const swiper = new Swiper('.swiper', {
             // Optional parameters
-            direction: 'vertical',
+            // direction: 'vertical',
+            direction: 'horizontal',
             loop: false,
 
             // If we need pagination

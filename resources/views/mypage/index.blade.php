@@ -18,6 +18,15 @@
     <script src="{{ url('js/uikit.min.js') }}"></script>
     <script src="{{ url('js/uikit-icons.min.js') }}"></script>
 
+    {{-- Swiper --}}
+    <link rel="stylesheet" href="{{ url('/swiper/swiper-bundle.min.css') }}" />
+    <script src="{{ url('/swiper/swiper-bundle.min.js') }}"></script>
+
+    <style>
+        .swiper {
+            height: 150px;
+        }
+    </style>
 </head>
 
 <body class="uk-container-xsmall">
@@ -73,7 +82,21 @@
                 @endif
                 <tr>
                     <th>QR</td>
-                    <td>{!! QrCode::size(150)->generate(url('/s/check_in?id=') . $participant->uuid) !!}</td>
+                    <td>
+                        <!-- Slider main container -->
+                        <div class="swiper">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    {!! QrCode::size(150)->generate(url('/s/check_in?id=') . $participant->uuid) !!}
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="#" class="uk-button uk-button-large uk-button-primary">隠しチェックイン</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <th>座席番号</th>
@@ -204,6 +227,29 @@
         </div>
     @endif
     {{-- ボーイ欠席ウィンドウ --}}
+    <script>
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'vertical',
+            loop: false,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+    </script>
 </body>
 
 </html>

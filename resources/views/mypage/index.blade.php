@@ -44,10 +44,9 @@
             <p class="uk-text-danger">警備の関係で再入場はできません!</p>
         </div>
         <div class="card-body p-0">
-            <table class="uk-table uk-table-hover uk-table-striped">
+            <table class="uk-table uk-table-striped">
                 <tr>
-                    <th>氏名</th>
-                    <td>{{ $participant->name }} 様
+                    <td class="uk-text-center uk-text-bold uk-text-large">{{ $participant->name }} 様 ({{ $participant->seat_number }})
                         @unless(empty($participant->self_absent))
                             <span class="uk-text-danger">(欠)</span>
                         @endunless
@@ -55,9 +54,9 @@
                 </tr>
                 @if (isset($participant->vs->name) || isset($participant->bs->name))
                     <tr>
-                        <th>引率スカウト</th>
+
                         {{-- シート番号も必要!! --}}
-                        <td>
+                        <td class="uk-text-center">
                             {{-- ベンチャースカウト --}}
                             @if (isset($participant->vs->name))
                                 VS:{{ $participant->vs->name }} 様
@@ -82,8 +81,7 @@
                     </tr>
                 @endif
                 <tr>
-                    <th>QR</td>
-                    <td>
+                    <td class="uk-text-center">
                         <!-- Slider main container -->
                         <div class="swiper">
                             <!-- Additional required wrapper -->
@@ -99,13 +97,8 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <th>座席番号</th>
-                    <td>{{ $participant->seat_number }}</td>
-                </tr>
+                {{-- <tr>
 
-                <tr>
-                    <th>チェックイン</th>
                     <td>
                         @if (empty($participant->checkedin_at) && empty($participant->self_absent))
                             <a href="#modal-self-check-in" uk-toggle
@@ -116,9 +109,9 @@
                             <span class="uk-text-success"><span uk-icon="icon: check"></span>チェックイン済み</span>
                         @endif
                     </td>
-                </tr>
+                </tr> --}}
                 <tr>
-                    <th>欠席手続</th>
+
                     <td>
                         @if (empty($participant->checkedin_at) && empty($participant->self_absent))
                             <p class="uk-text-default"><a href="#modal-self-absent" uk-toggle
@@ -130,7 +123,7 @@
                             empty($participant->vs->self_absent) &&
                             empty($participant->vs->checkedin_at))
                             <p class="uk-text-default"><a href="#modal-vs-absent" uk-toggle
-                                    class=" uk-button uk-button-danger uk-width-1-1@m">{{ $participant->vs->name }}</a>
+                                    class=" uk-button uk-button-danger uk-width-1-1@m">欠席({{ $participant->vs->name }}様)</a>
                             </p>
                         @elseif(isset($participant->vs->self_absent))
                             {{ $participant->vs->name }}<br>
@@ -139,7 +132,7 @@
                             empty($participant->bs->self_absent) &&
                             empty($participant->bs->checkedin_at))
                             <p class="uk-text-default"><a href="#modal-bs-absent" uk-toggle
-                                    class=" uk-button uk-button-danger uk-width-1-1@m">{{ $participant->bs->name }}</a>
+                                    class=" uk-button uk-button-danger uk-width-1-1@m">欠席({{ $participant->bs->name }}様)</a>
                             </p>
                         @elseif(isset($participant->bs->self_absent))
                             {{ $participant->bs->name }}

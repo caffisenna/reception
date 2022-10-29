@@ -28,8 +28,8 @@ Route::get('/self_check_in', [App\Http\Controllers\Check_InController::class, 's
 
 // 管理ユーザ用
 Route::prefix('admin')->middleware('can:admin')->group(function () {
+    Route::post('/search', [App\Http\Controllers\ParticipantController::class, 'search'])->name('search');
     Route::resource('participants', App\Http\Controllers\ParticipantController::class);
-    Route::post('participants', [App\Http\Controllers\ParticipantController::class, 'search'])->name('search');
     Route::resource('admin_staffinfos', App\Http\Controllers\AdminStaffinfoController::class);
     Route::get('/checked_in', [App\Http\Controllers\ParticipantController::class, 'checked_in'])->name('checked_in'); // チェックイン済みリスト
     Route::get('/not_checked_in', [App\Http\Controllers\ParticipantController::class, 'not_checked_in'])->name('not_checked_in'); // 未チェックイン済みリスト
@@ -38,6 +38,7 @@ Route::prefix('admin')->middleware('can:admin')->group(function () {
     Route::get('/cancel_absent/', [App\Http\Controllers\ParticipantController::class, 'cancel_absent'])->name('cancel_absent'); // 欠席キャンセル
     Route::get('/cancel', [App\Http\Controllers\AdminCancelController::class, 'index'])->name('cancel'); // キャンセル処理
     Route::post('/cancel', [App\Http\Controllers\AdminCancelController::class, 'index'])->name('cancel'); // キャンセルリスト検索
+    Route::get('/sendmail', [App\Http\Controllers\ParticipantController::class, 'sendmail'])->name('sendmail'); // 招待状送信
 });
 
 // スタッフ用

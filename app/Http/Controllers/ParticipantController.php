@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InvitationSend;
 
 class ParticipantController extends AppBaseController
 {
@@ -251,6 +253,22 @@ class ParticipantController extends AppBaseController
             ->paginate(100);
 
         return view('participants.checked_in')
+            ->with('participants', $participants);
+    }
+
+    public function sendmail(Request $request)
+    {
+        $input = $request->all();
+        if (isset($input['uuid'])) { // UUID取得
+            $participant = Participant::where('uuid', $input['uuid'])->first();
+            $sendto = ['email' => $participant->email];
+            Mail::to($sendto)->queue(new InvitationSend($participant));
+        }
+
+        $participants = Participant::where('deleted_at', NULL)
+            ->paginate(100);
+
+        return view('participants.sendmail')
             ->with('participants', $participants);
     }
 }

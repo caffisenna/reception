@@ -6,6 +6,11 @@
         </a>
     </li>
     <li class="nav-item">
+        <a href="{{ url('/admin/sendmail') }}" class="nav-link {{ Request::is('*sendmail') ? 'active' : '' }}">
+            <p>招待状送信</p>
+        </a>
+    </li>
+    <li class="nav-item">
         <a href="{{ url('/admin/checked_in') }}" class="nav-link {{ Request::is('/admin/checked_in') ? 'active' : '' }}">
             <p>チェックイン済み</p>
         </a>

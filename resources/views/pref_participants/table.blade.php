@@ -54,19 +54,19 @@
                     </td>
                     <td>{{ $participant->seat_number }}</td>
                     <td width="120">
-                        {{-- {!! Form::open(['route' => ['pref_participants.destroy', $participant->id], 'method' => 'delete']) !!} --}}
                         <div class='btn-group'>
                             <a href="{{ route('pref_participants.edit', [$participant->id]) }}"
                                 class='btn btn-default btn-xs'>
                                 <span uk-icon="file-edit"></span>
                             </a>
-                            {{-- {!! Form::button('<span uk-icon="trash"></span>', [
-                                'type' => 'submit',
-                                'class' => 'btn btn-danger btn-xs',
-                                'onclick' => "return confirm('本当に削除しますか?')",
-                            ]) !!} --}}
+                            @if (env('PREF_SEND_INVITATION') == 'true')
+                                @unless($participant->category == '県連代表(5)' || $participant->category == '県連代表(6)')
+                                    <a href="{{ url('/') }}/pref/sendmail?uuid={{ $participant->uuid }}"
+                                        onclick="return confirm('{{ $participant->name }}さんへデジタルパスを送信します。よろしいですか？')">
+                                        <span uk-icon="mail" class="uk-button-primary"></span></a>
+                                @endunless
+                            @endif
                         </div>
-                        {{-- {!! Form::close() !!} --}}
                     </td>
                 </tr>
             @endforeach

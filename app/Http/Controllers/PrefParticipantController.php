@@ -12,6 +12,8 @@ use Flash;
 use Response;
 use Ramsey\Uuid\Uuid;
 use Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InvitationSend;
 
 class PrefParticipantController extends AppBaseController
 {
@@ -159,5 +161,22 @@ class PrefParticipantController extends AppBaseController
         Flash::success('削除しました');
 
         return redirect(route('pref_participants.index'));
+    }
+
+    public function sendmail(Request $request)
+    {
+        $input = $request->all();
+        dd($input['uuid']);
+        if (isset($input['uuid'])) { // UUID取得
+            $participant = Participant::where('uuid', $input['uuid'])->first();
+            $sendto = ['email' => $participant->email];
+            Mail::to($sendto)->queue(new InvitationSend($participant));
+        }
+
+        $participants = Participant::where('deleted_at', NULL)
+            ->paginate(100);
+
+        return view('participants.sendmail')
+            ->with('participants', $participants);
     }
 }

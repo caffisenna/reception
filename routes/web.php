@@ -57,5 +57,6 @@ Route::prefix('s')->middleware('can:staff')->group(function () {
 
 // 県連用
 Route::prefix('pref')->middleware('can:pref')->group(function () {
+    Route::get('sendmail', [App\Http\Controllers\PrefParticipantController::class, 'sendmail'])->name('pref_sendmail');
     Route::resource('pref_participants', App\Http\Controllers\PrefParticipantController::class);
 });

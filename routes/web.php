@@ -39,6 +39,7 @@ Route::prefix('admin')->middleware('can:admin')->group(function () {
     Route::get('/cancel', [App\Http\Controllers\AdminCancelController::class, 'index'])->name('cancel'); // キャンセル処理
     Route::post('/cancel', [App\Http\Controllers\AdminCancelController::class, 'index'])->name('cancel'); // キャンセルリスト検索
     Route::get('/sendmail', [App\Http\Controllers\ParticipantController::class, 'sendmail'])->name('sendmail'); // 招待状送信
+    Route::get('/sendmail_pref', [App\Http\Controllers\ParticipantController::class, 'sendmail_pref'])->name('sendmail_pref'); // 招待状送信(県連単位)
 });
 
 // スタッフ用

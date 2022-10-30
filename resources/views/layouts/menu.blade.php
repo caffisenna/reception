@@ -7,7 +7,12 @@
     </li>
     <li class="nav-item">
         <a href="{{ url('/admin/sendmail') }}" class="nav-link {{ Request::is('*sendmail') ? 'active' : '' }}">
-            <p>招待状送信</p>
+            <p>デジパス送信</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ url('/admin/sendmail_pref') }}" class="nav-link {{ Request::is('*sendmail_pref') ? 'active' : '' }}">
+            <p>デジパス送信(県連単位)</p>
         </a>
     </li>
     <li class="nav-item">

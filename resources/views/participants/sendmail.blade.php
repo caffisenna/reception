@@ -122,8 +122,7 @@
                                         <div class='btn-group'>
                                             <a href="{{ url('/admin/sendmail') . "/?uuid=$participant->uuid" }}"
                                                 onclick="return confirm('{{ $participant->name }}さんへデジタルパスを送信します。よろしいですか？')"
-                                                uk-toggle class="uk-button uk-button-primary"><span
-                                                    uk-icon="mail"></span></a>
+                                                class="uk-button uk-button-primary"><span uk-icon="mail"></span></a>
                                         </div>
                                     </td>
                                 </tr>

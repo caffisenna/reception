@@ -74,7 +74,6 @@
                 <th>所属</th>
                 <th>役務</th>
                 <th>座席</th>
-                <th>操作</th>
             </tr>
         </thead>
         <tbody>
@@ -95,13 +94,6 @@
                     </td>
                     <td>{{ $participant->role }}</td>
                     <td>{{ $participant->seat_number }}</td>
-                    <td>
-                        <div class='btn-group'>
-                            <a href="{{ url('/admin/cancel_check_in') . "/?uuid=$participant->uuid" }}" uk-toggle
-                                class="uk-button uk-button-danger">取消し</a>
-                        </div>
-                        {!! Form::close() !!}
-                    </td>
                 </tr>
             @endforeach
         </tbody>

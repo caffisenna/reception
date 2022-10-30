@@ -263,12 +263,11 @@ class ParticipantController extends AppBaseController
             $participant = Participant::where('uuid', $input['uuid'])->first();
             $sendto = ['email' => $participant->email];
             Mail::to($sendto)->queue(new InvitationSend($participant));
+            Flash::success($participant->name . '様へデジタルパスを送信しました');
         }
 
         $participants = Participant::where('deleted_at', NULL)
             ->paginate(100);
-
-        Flash::success($participant->name . '様へデジタルパスを送信しました');
 
         return view('participants.sendmail')
             ->with('participants', $participants);

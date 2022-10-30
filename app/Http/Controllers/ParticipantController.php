@@ -268,6 +268,8 @@ class ParticipantController extends AppBaseController
         $participants = Participant::where('deleted_at', NULL)
             ->paginate(100);
 
+        Flash::success($participant->name . '様へデジタルパスを送信しました');
+
         return view('participants.sendmail')
             ->with('participants', $participants);
     }

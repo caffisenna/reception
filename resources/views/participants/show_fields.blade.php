@@ -13,7 +13,7 @@
     </tr>
     <tr>
         <td>所属</td>
-        <td>{{ $participant->district }} {{ $participant->dan_name }}</td>
+        <td>{{ $participant->district }} {{ $participant->dan }}</td>
     </tr>
     <tr>
         <td>役務</td>
@@ -33,7 +33,7 @@
     </tr>
     <tr>
         <td>QRコード</td>
-        <td>{!! QrCode::size(150)->generate('https://reception.rs100.info/mypage?id='.$participant->uuid) !!}</td>
+        <td>{!! QrCode::size(150)->generate("https://rsvp-100th.scout.or.jp/mypage?id=" . $participant->uuid) !!}</td>
     </tr>
     <tr>
         <td>チェックイン</td>

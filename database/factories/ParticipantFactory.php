@@ -26,7 +26,7 @@ class ParticipantFactory extends Factory
         'uuid' => $this->faker->word,
         'pref' => $this->faker->word,
         'district' => $this->faker->word,
-        'dan_name' => $this->faker->word,
+        'dan' => $this->faker->word,
         'dan_number' => $this->faker->word,
         'role' => $this->faker->word,
         'email' => $this->faker->word,

@@ -49,9 +49,9 @@ class ParticipantController extends AppBaseController
             // foreachで回して、引率指導者の場合は同じ県連のBSとVSを引っかける
             // $participant->vs $participant->bs などに格納
             foreach ($participants as $value) {
-                if ($value->is_represent == "県連代表(4)") {
-                    $value->vs = Participant::where('pref', $value->pref)->where('is_represent', '県連代表(5)')->select('name')->first();
-                    $value->bs = Participant::where('pref', $value->pref)->where('is_represent', '県連代表(6)')->select('name')->first();
+                if ($value->category == "県連代表(4)") {
+                    $value->vs = Participant::where('pref', $value->pref)->where('category', '県連代表(5)')->select('name')->first();
+                    $value->bs = Participant::where('pref', $value->pref)->where('category', '県連代表(6)')->select('name')->first();
                 }
             }
 

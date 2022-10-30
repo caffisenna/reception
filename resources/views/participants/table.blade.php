@@ -15,7 +15,7 @@
                 <tr>
                     <td>{{ $participant->pref }}</td>
                     <td>
-                        @switch($participant->is_represent)
+                        @switch($participant->category)
                             @case('県連代表(1)')
                                 理事長
                             @break

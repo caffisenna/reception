@@ -52,7 +52,7 @@
                                 <tr>
                                     <td>所属</td>
                                     <td>{{ $participant->pref }}連盟 @if ($participant->district){{ $participant->district }}地区@endif
-                                        {{ $participant->dan_name }}@if($participant->dan_number){{ $participant->dan_number }}団@endif</td>
+                                        {{ $participant->dan }}@if($participant->dan_number){{ $participant->dan_number }}団@endif</td>
                                 </tr>
                                 <tr>
                                     <td>役務</td>

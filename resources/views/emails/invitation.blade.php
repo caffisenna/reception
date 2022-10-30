@@ -1,5 +1,5 @@
 {{-- {{ dd($user) }} --}}
-<p>{{ $user->pref }}連盟 {{ $user->district }}地区 {{ $user->dan_name }}団<br>
+<p>{{ $user->pref }}連盟 {{ $user->district }}地区 {{ $user->dan }}団<br>
 {{ $user->name }}様</p>
 
 <pre>

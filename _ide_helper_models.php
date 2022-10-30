@@ -20,16 +20,16 @@ namespace App\Models{
  * @property string $uuid
  * @property string $pref
  * @property string $district
- * @property string $dan_name
- * @property string $dan_number
+ * @property string $dan
  * @property string $role
+ * @property string $category
  * @property string $email
  * @property string $phone
  * @property string $seat_number
  * @property int $id
  * @property string|null $furigana
+ * @property string|null $dan_number
  * @property int|null $pref_priority
- * @property string|null $is_represent
  * @property string|null $is_proxy
  * @property int $wheel_chair
  * @property string|null $with_helper
@@ -46,9 +46,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Participant newQuery()
  * @method static \Illuminate\Database\Query\Builder|Participant onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Participant query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereCategory($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereCheckedinAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Participant whereDanName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereDan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereDanNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereDistrict($value)
@@ -58,7 +59,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereGoWithScouts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereIsProxy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Participant whereIsRepresent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant wherePref($value)

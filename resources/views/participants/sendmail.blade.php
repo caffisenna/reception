@@ -115,7 +115,7 @@
                                     </td>
                                     <td>{{ $participant->pref }}</td>
                                     <td>{{ $participant->district }}
-                                        {{ $participant->dan_name }}{{ $participant->dan_number }}
+                                        {{ $participant->dan }}{{ $participant->dan_number }}
                                     </td>
                                     <td>{{ $participant->role }}</td>
                                     <td>

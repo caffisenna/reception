@@ -21,7 +21,7 @@ class ParticipantRepository extends BaseRepository
         'uuid',
         'pref',
         'district',
-        'dan_name',
+        'dan',
         'dan_number',
         'role',
         'email',

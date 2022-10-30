@@ -8,7 +8,7 @@
                     <h1>{{ Auth::user()->is_pref }}連盟 参加者情報</h1>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-default float-right" href="{{ route('participants.index') }}">
+                    <a class="btn btn-default float-right" href="{{ route('pref_participants.index') }}">
                         Back
                     </a>
                 </div>

@@ -33,9 +33,9 @@ class MyPageController extends AppBaseController
         }
 
         // 引率スカウトを引っ張る
-        if ($participant->is_represent == "県連代表(4)") {
-            $participant->vs = Participant::where('pref', $participant->pref)->where('is_represent', '県連代表(5)')->select('name','uuid','seat_number', 'self_absent','checkedin_at')->first();
-            $participant->bs = Participant::where('pref', $participant->pref)->where('is_represent', '県連代表(6)')->select('name','uuid','seat_number', 'self_absent','checkedin_at')->first();
+        if ($participant->category == "県連代表(4)") {
+            $participant->vs = Participant::where('pref', $participant->pref)->where('category', '県連代表(5)')->select('name','uuid','seat_number', 'self_absent','checkedin_at')->first();
+            $participant->bs = Participant::where('pref', $participant->pref)->where('category', '県連代表(6)')->select('name','uuid','seat_number', 'self_absent','checkedin_at')->first();
         }
 
         return view('mypage.index')

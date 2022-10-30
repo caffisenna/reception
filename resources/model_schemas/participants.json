@@ -60,7 +60,7 @@
 		"inView": true
 	},
 	{
-		"name": "dan_name",
+		"name": "dan",
 		"dbType": "string",
 		"htmlType": "text",
 		"validations": "required",

@@ -49,9 +49,9 @@ class Check_InController extends AppBaseController
 
             // 引率スカウトの取得
             foreach ($participants as $value) {
-                if ($value->is_represent == "県連代表(4)") {
-                    $value->vs = Participant::where('pref', $value->pref)->where('is_represent', '県連代表(5)')->select('name')->first();
-                    $value->bs = Participant::where('pref', $value->pref)->where('is_represent', '県連代表(6)')->select('name')->first();
+                if ($value->category == "県連代表(4)") {
+                    $value->vs = Participant::where('pref', $value->pref)->where('category', '県連代表(5)')->select('name')->first();
+                    $value->bs = Participant::where('pref', $value->pref)->where('category', '県連代表(6)')->select('name')->first();
                 }
             }
             return view('check_in.input')->with('participants', $participants);
@@ -64,9 +64,9 @@ class Check_InController extends AppBaseController
             $participant->save();
 
             // 引率スカウトの取得
-            if ($participant->is_represent == "県連代表(4)") {
-                $vs = Participant::where('pref', $participant->pref)->where('is_represent', '県連代表(5)')->select('id', 'name')->first();
-                $bs = Participant::where('pref', $participant->pref)->where('is_represent', '県連代表(6)')->select('id', 'name')->first();
+            if ($participant->category == "県連代表(4)") {
+                $vs = Participant::where('pref', $participant->pref)->where('category', '県連代表(5)')->select('id', 'name')->first();
+                $bs = Participant::where('pref', $participant->pref)->where('category', '県連代表(6)')->select('id', 'name')->first();
 
                 // 打刻
                 if (isset($vs)) {
@@ -98,9 +98,9 @@ class Check_InController extends AppBaseController
         $person->save();
 
         // 引率スカウトの処理
-        if ($person->is_represent == "県連代表(4)") {
-            $vs = Participant::where('pref', $person->pref)->where('is_represent', '県連代表(5)')->first();
-            $bs = Participant::where('pref', $person->pref)->where('is_represent', '県連代表(6)')->first();
+        if ($person->category == "県連代表(4)") {
+            $vs = Participant::where('pref', $person->pref)->where('category', '県連代表(5)')->first();
+            $bs = Participant::where('pref', $person->pref)->where('category', '県連代表(6)')->first();
 
             // チェックイン処理
             if (empty($vs->self_absent)) {  // 欠席入力があればチェックインの打刻しない

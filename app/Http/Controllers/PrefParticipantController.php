@@ -32,7 +32,7 @@ class PrefParticipantController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $participants = Participant::where('pref', Auth::user()->is_pref)->where('is_represent', '<>', '任意参加者')->paginate(100);
+        $participants = Participant::where('pref', Auth::user()->is_pref)->where('category', '<>', '任意参加者')->paginate(100);
 
         return view('pref_participants.index')
             ->with('participants', $participants);

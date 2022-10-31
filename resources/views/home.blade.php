@@ -21,8 +21,21 @@
             @endif
 
             @if (auth::user()->is_admin)
-                <h3>管理者さんようこそ!</h3>
+                <p class="uk-text-large">県連代表 未登録分</p>
+                <table class="uk-table uk-table-divider uk-table-responsive uk-table-striped uk-table-hover">
+                    <tr>
+                        <th>県連</th>
+                        <th>役務</th>
+                    </tr>
+                    @foreach ($participants as $participant)
+                        <tr>
+                            <td>{{ $participant->pref }}</td>
+                            <td>{{ $participant->role }}</td>
+                        </tr>
+                    @endforeach
+                </table>
             @endauth
+        </div>
     </div>
 </div>
 @endsection

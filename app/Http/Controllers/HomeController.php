@@ -29,6 +29,9 @@ class HomeController extends Controller
             // 県連認証済みなら一覧にリダイレクト
             $participants = Participant::where('pref', Auth::user()->is_pref)->where('category', '<>', '任意参加者')->paginate(100);
             return view('pref_participants.index')->with('participants', $participants);
+        } else if(isset(Auth::user()->is_admin)) {
+            $participants = Participant::where('name', '')->get();
+            return view('home')->with('participants', $participants);
         } else {
             // それ以外はhomeへ
             return view('home');

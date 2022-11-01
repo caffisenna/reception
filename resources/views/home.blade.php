@@ -29,7 +29,7 @@
                     </tr>
                     @foreach ($participants as $participant)
                         <tr>
-                            <td>{{ $participant->pref }}</td>
+                            <td class="uk-text-danger">{{ $participant->pref }}</td>
                             <td>{{ $participant->role }}</td>
                         </tr>
                     @endforeach

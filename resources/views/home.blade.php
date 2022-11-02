@@ -7,7 +7,7 @@
                 <div class="uk-card uk-card-primary uk-card-body uk-width-1-2@m">
                     <h3 class="uk-card-title">QRスキャン開始</h3>
                     <ul class="uk-list">
-                        <li>ブラウザはこのまま、スマホのカメラを起動して来場者のQRコードをスキャンしてください</li>
+                        <li>ブラウザはこのまま、スマホのカメラを起動して来場者の2次元コードをスキャンしてください</li>
                     </ul>
                 </div>
                 <div class="uk-card uk-card-secondary uk-card-body uk-width-1-2@m">

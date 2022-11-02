@@ -32,7 +32,7 @@
         <td><a href="{{ url('/mypage?id=').$participant->uuid }}">{{ $participant->uuid }}</a></td>
     </tr>
     <tr>
-        <td>QRコード</td>
+        <td>2次元コード</td>
         <td>{!! QrCode::size(150)->generate("https://rsvp-100th.scout.or.jp/mypage?id=" . $participant->uuid) !!}</td>
     </tr>
     <tr>

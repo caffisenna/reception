@@ -161,7 +161,8 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>参加費チェック(未入金のみ表示)</h1>
+                        <h1>参加費チェック</h1>
+                        <p class="uk-text-default">入金未確認のみ表示</p>
                     </div>
                     @if (Auth::user()->is_pref == null)
                         <div class="col-sm-6">

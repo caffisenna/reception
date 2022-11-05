@@ -41,7 +41,11 @@
         <td>{!! Form::text('phone', null, ['class' => 'form-control']) !!}</td>
     </tr>
     <tr>
-        <td>{!! Form::label('seat_number', '座席番号:') !!}</td>
-        <td>{{ $participant->seat_number }}</td>
+        <td>{!! Form::label('zip', '郵便番号:') !!}</td>
+        <td>{!! Form::text('zip', null, ['class' => 'form-control']) !!}</td>
+    </tr>
+    <tr>
+        <td>{!! Form::label('address', '住所:') !!}</td>
+        <td>{!! Form::text('address', null, ['class' => 'form-control']) !!}</td>
     </tr>
 </table>

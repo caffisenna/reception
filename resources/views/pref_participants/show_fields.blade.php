@@ -28,6 +28,10 @@
         <td>{{ $participant->phone }}</td>
     </tr>
     <tr>
+        <td>住所</td>
+        <td>{{ $participant->zip }} {{ $participant->address }}</td>
+    </tr>
+    <tr>
         <td>UUID<br>マイページ</td>
         <td><a href="{{ url('/mypage?id=').$participant->uuid }}">{{ $participant->uuid }}</a></td>
     </tr>
@@ -38,5 +42,9 @@
     <tr>
         <td>チェックイン</td>
         <td>{{ $participant->checkedin_at }}</td>
+    </tr>
+    <tr>
+        <td>参加費振込</td>
+        <td>{{ $participant->fee_checked_at }}</td>
     </tr>
 </table>

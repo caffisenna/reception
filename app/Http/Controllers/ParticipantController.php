@@ -292,4 +292,25 @@ class ParticipantController extends AppBaseController
 
         return view('participants.sendmail_pref')->with('prefs', $prefs);
     }
+
+
+    public function fee_check(Request $request)
+    {
+        $input = $request->all();
+
+        // uuidがあればDBから検索して入金確認日をチェック
+        if (isset($input['uuid'])) {
+            $participant = Participant::where('uuid', $input['uuid'])->first();
+            $participant->fee_checked_at = now();
+            $participant->save();
+            Flash::success($participant->name . '様の入金チェックを行いました。');
+        }
+
+        $participants = Participant::where('reception_seat_number', '<>', null)
+            ->where('fee_checked_at', null)
+            ->get();
+
+        return view('participants.fee_check')
+            ->with('participants', $participants);
+    }
 }

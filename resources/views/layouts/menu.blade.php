@@ -7,7 +7,7 @@
     </li>
     <li class="nav-item">
         <a href="{{ url('/admin/sendmail') }}" class="nav-link {{ Request::is('*sendmail') ? 'active' : '' }}">
-            <p>デジパス送信</p>
+            <p>デジパス送信(個別)</p>
         </a>
     </li>
     <li class="nav-item">
@@ -40,6 +40,13 @@
     <li class="nav-item"><a href="https://colab.research.google.com/drive/1sQGFqa_sSCydO8O_p3htjDGU53wUJ8K6?usp=sharing"
             class="nav-link" target="_blank">隣接シート特定<span uk-icon="icon: google"></span></a>
     </li>
+
+    <li class="nav-item">
+        <a href="{{ url('/admin/fee_check') }}" class="nav-link {{ Request::is('/admin/fee_check*') ? 'active' : '' }}">
+            <p>レセプション参加費</p>
+        </a>
+    </li>
+
     <p class="uk-text-warning">情報</p>
     <li class="nav-item">
         <a href="{{ route('admin_staffinfos.index') }}"

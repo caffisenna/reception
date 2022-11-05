@@ -105,6 +105,7 @@
             '宮崎' => '宮崎',
             '鹿児島' => '鹿児島',
             '沖縄' => '沖縄',
+            '荻窪' => '荻窪',
         ],
         null,
         ['class' => 'form-control custom-select'],
@@ -145,4 +146,29 @@
 <div class="form-group col-sm-6">
     {!! Form::label('seat_number', '座席番号:') !!}
     {!! Form::text('seat_number', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group col-sm-6">
+    {!! Form::label('zip', '郵便番号:') !!}
+    {!! Form::text('zip', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group col-sm-6">
+    {!! Form::label('adderss', '住所:') !!}
+    {!! Form::text('address', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group col-sm-6">
+    {!! Form::label('seat_number', '座席番号(記念式典):') !!}
+    {!! Form::text('seat_number', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group col-sm-6">
+    {!! Form::label('reception_seat_number', '座席番号(レセプション):') !!}
+    {!! Form::text('reception_seat_number', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group col-sm-6">
+    {!! Form::label('fee_checked_at', '参加費振込:') !!}
+    {!! Form::text('fee_checked_at', null, ['class' => 'form-control']) !!}
 </div>

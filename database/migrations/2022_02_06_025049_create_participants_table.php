@@ -31,7 +31,11 @@ class CreateParticipantsTable extends Migration
             $table->string('self_absent')->nullable();          // 欠席理由 自己入力, 指導者入力, 発熱NG
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
-            $table->string('seat_number')->nullable();
+            $table->string('seat_number')->nullable();          // 式典座席
+            $table->string('reception_seat_number')->nullable();          // レセプション座席
+            $table->string('zip')->nullable();
+            $table->string('address')->nullable();
+            $table->string('fee_checked_at')->nullable();       // 入金チェック
             $table->string('uuid')->unique();
             $table->dateTime('checkedin_at')->nullable();           // 式典チェックイン
             $table->dateTime('reception_checkedin_at')->nullable(); // レセプションチェックイン

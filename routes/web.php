@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::Redirect('/register','/',301);
+Route::Redirect('/register', '/', 301);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/mypage', [App\Http\Controllers\MyPageController::class, 'index'])->name('mypage');
@@ -40,6 +40,7 @@ Route::prefix('admin')->middleware('can:admin')->group(function () {
     Route::post('/cancel', [App\Http\Controllers\AdminCancelController::class, 'index'])->name('cancel'); // キャンセルリスト検索
     Route::get('/sendmail', [App\Http\Controllers\ParticipantController::class, 'sendmail'])->name('sendmail'); // 招待状送信
     Route::get('/sendmail_pref', [App\Http\Controllers\ParticipantController::class, 'sendmail_pref'])->name('sendmail_pref'); // 招待状送信(県連単位)
+    Route::get('/fee_check', [App\Http\Controllers\ParticipantController::class, 'fee_check'])->name('fee_check'); // 参加費チェック
 });
 
 // スタッフ用

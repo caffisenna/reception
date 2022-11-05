@@ -21,6 +21,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $email
  * @property string $phone
  * @property string $seat_number
+ * @property string $reception_seat_number
+ * @property string $zip
+ * @property string $address
+ * @property string $fee_checked_at
  */
 class Participant extends Model
 {
@@ -46,7 +50,11 @@ class Participant extends Model
         'role',
         'email',
         'phone',
-        'seat_number'
+        'seat_number',
+        'reception_seat_number',
+        'zip',
+        'address',
+        'fee_checked_at',
     ];
 
     /**
@@ -66,7 +74,11 @@ class Participant extends Model
         'role' => 'string',
         'email' => 'string',
         'phone' => 'string',
-        'seat_number' => 'string'
+        'seat_number' => 'string',
+        'reception_seat_number' => 'string',
+        'zip' => 'string',
+        'address' => 'string',
+        'fee_checked_at' => 'date',
     ];
 
     /**

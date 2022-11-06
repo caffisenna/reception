@@ -46,7 +46,21 @@
         <div class="card-body p-0">
             <table class="uk-table uk-table-striped">
                 <tr>
-                    <td class="uk-text-center uk-text-bold uk-text-large">{{ $participant->name }} 様 ({{ $participant->seat_number }})
+                    <td class="uk-text-center">
+                        <span class="uk-text-bold uk-text-large">
+                            {{-- ここで来賓を明示する --}}
+                            @if ($participant->category == '県連代表(1)')
+                                <span class="uk-text-warning">ご来賓</span><br>
+                            @endif
+                            {{-- ここで来賓を明示する --}}
+                            {{ $participant->name }} 様
+                        </span><br>
+                        @if (isset($participant->seat_number))
+                            記念式典:{{ $participant->seat_number }}<br>
+                        @endif
+                        @if (isset($participant->reception_seat_number))
+                            レセプション:{{ $participant->reception_seat_number }}<br>
+                        @endif
                         @unless(empty($participant->self_absent))
                             <span class="uk-text-danger">(欠)</span>
                         @endunless

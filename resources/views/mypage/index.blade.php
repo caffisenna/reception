@@ -111,19 +111,6 @@
                         </div>
                     </td>
                 </tr>
-                {{-- <tr>
-
-                    <td>
-                        @if (empty($participant->checkedin_at) && empty($participant->self_absent))
-                            <a href="#modal-self-check-in" uk-toggle
-                                class=" uk-button uk-button-primary uk-width-1-1@m">チェックイン</a>
-                        @elseif(isset($participant->self_absent))
-                            <span class="uk-text-success">欠席入力済み</span>
-                        @else
-                            <span class="uk-text-success"><span uk-icon="icon: check"></span>チェックイン済み</span>
-                        @endif
-                    </td>
-                </tr> --}}
                 <tr>
 
                     <td>

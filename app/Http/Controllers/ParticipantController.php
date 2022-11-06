@@ -43,9 +43,9 @@ class ParticipantController extends AppBaseController
     public function search(Request $request)
     {
         if (isset($request->furigana)) {
-            // 個別氏名をサーチ 何でチェックイン済みは除外?
+            // 個別氏名をサーチ
             // $participants = Participant::where('furigana', 'like', "$request->furigana%")->where('checkedin_at', null)->paginate(100);
-            $participants = Participant::where('furigana', 'like', "$request->furigana%")->paginate(100);
+            $participants = Participant::where('furigana', 'like', "$request->furigana%")->paginate(100); // チェックイン済みも取得して表示する
 
             // foreachで回して、引率指導者の場合は同じ県連のBSとVSを引っかける
             // $participant->vs $participant->bs などに格納
@@ -62,7 +62,7 @@ class ParticipantController extends AppBaseController
 
         if (isset($request->prefecture)) {
             // $participants = Participant::where('pref', "$request->prefecture")->where('checkedin_at', null)->paginate(100);
-            $participants = Participant::where('pref', "$request->prefecture")->paginate(100);
+            $participants = Participant::where('pref', "$request->prefecture")->paginate(100); // チェックイン済みも取得して表示する
             return view('participants.index')->with('participants', $participants);
         }
     }

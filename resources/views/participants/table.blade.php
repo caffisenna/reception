@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="{{ url('/datatables/jquery.dataTables.css') }}">
-<script src="{{ url('/datatables/dataTables.fixedHeader.min.js') }}"></script>
 <script type="text/javascript" charset="utf8" src="{{ url('/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ url('/datatables/dataTables.fixedHeader.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         // Setup - add a text input to each footer cell
@@ -66,7 +66,7 @@
     });
 </script>
 <div class="table-responsive">
-    <table class="uk-table uk-table-divider uk-table-hover uk-table-responsive" id="participants-table">
+    <table class="uk-table uk-table-divider uk-table-hover" id="participants-table">
         <thead>
             <tr>
                 <th>県連</th>

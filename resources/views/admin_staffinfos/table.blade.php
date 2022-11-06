@@ -66,7 +66,7 @@
     });
 </script>
 <div class="table-responsive">
-    <table class="uk-table uk-table-divider uk-table-small" id="staffinfos-table">
+    <table class="uk-table uk-table-divider" id="staffinfos-table">
         <thead>
             <tr>
                 <th>氏名</th>

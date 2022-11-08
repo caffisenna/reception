@@ -44,7 +44,7 @@
             <p class="uk-text-danger">警備の関係で再入場はできません!</p>
         </div>
         <div class="card-body p-0">
-            <table class="uk-table uk-table-striped">
+            <table class="uk-table">
                 <tr>
                     <td class="uk-text-center">
                         <span class="uk-text-bold uk-text-large">

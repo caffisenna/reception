@@ -79,12 +79,12 @@
         <tbody>
             @foreach ($staffinfos as $staffinfo)
                 <tr>
-                    <td class="uk-text-small">{{ $staffinfo->user->name }}<br>({{ $staffinfo->furigana }})</td>
-                    <td class="uk-text-small">{{ $staffinfo->team }}</td>
-                    <td class="uk-text-small">{{ $staffinfo->prefecture }}連盟<br>{{ $staffinfo->district }}地区
+                    <td>{{ $staffinfo->user->name }}<br>({{ $staffinfo->furigana }})</td>
+                    <td>{{ $staffinfo->team }}</td>
+                    <td>{{ $staffinfo->prefecture }}連盟<br>{{ $staffinfo->district }}地区
                         {{ $staffinfo->dan }}団</td>
-                    <td class="uk-text-small">{{ $staffinfo->role }}</td>
-                    <td width="120">
+                    <td>{{ $staffinfo->role }}</td>
+                    <td>
                         {!! Form::open(['route' => ['admin_staffinfos.destroy', $staffinfo->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
                             <a href="{{ route('admin_staffinfos.edit', [$staffinfo->id]) }}"

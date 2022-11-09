@@ -26,10 +26,12 @@ namespace App\Models{
  * @property string $email
  * @property string $phone
  * @property string $seat_number
+ * @property string $reception_seat_number
+ * @property string $zip
+ * @property string $address
+ * @property string $fee_checked_at
  * @property int $id
  * @property string|null $furigana
- * @property string|null $dan_number
- * @property int|null $pref_priority
  * @property string|null $is_proxy
  * @property int $wheel_chair
  * @property string|null $with_helper
@@ -46,14 +48,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Participant newQuery()
  * @method static \Illuminate\Database\Query\Builder|Participant onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Participant query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereCategory($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereCheckedinAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereDan($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Participant whereDanNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereDistrict($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereFeeCheckedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereFurigana($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereGoWithLeader($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereGoWithScouts($value)
@@ -62,8 +65,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant wherePref($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Participant wherePrefPriority($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereReceptionCheckedinAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereReceptionSeatNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereSeatNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereSelfAbsent($value)
@@ -71,6 +74,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereWheelChair($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Participant whereWithHelper($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Participant whereZip($value)
  * @method static \Illuminate\Database\Query\Builder|Participant withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Participant withoutTrashed()
  */

@@ -35,6 +35,7 @@ class CreateParticipantsTable extends Migration
             $table->string('reception_seat_number')->nullable();          // レセプション座席
             $table->string('zip')->nullable();
             $table->string('address')->nullable();
+            $table->dateTime('email_sent_at')->nullable();      // デジパス送信日時
             $table->string('fee_checked_at')->nullable();       // 入金チェック
             $table->string('uuid')->unique();
             $table->dateTime('checkedin_at')->nullable();           // 式典チェックイン

@@ -47,12 +47,24 @@
                                 </tr>
                                 <tr>
                                     <td>座席番号</td>
-                                    <td>{{ $participant->seat_number }}</td>
+                                    <td>
+                                        @if (isset($participant->seat_number))
+                                            記念式典: {{ $participant->seat_number }}
+                                        @endif
+                                        @if (isset($participant->reception_seat_number))
+                                            レセプション: {{ $participant->reception_seat_number }}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>所属</td>
-                                    <td>{{ $participant->pref }}連盟 @if ($participant->district){{ $participant->district }}地区@endif
-                                        {{ $participant->dan }}@if($participant->dan_number){{ $participant->dan_number }}団@endif</td>
+                                    <td>{{ $participant->pref }}連盟 @if ($participant->district)
+                                            {{ $participant->district }}地区
+                                        @endif
+                                        {{ $participant->dan }}@if ($participant->dan_number)
+                                            {{ $participant->dan_number }}団
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>役務</td>

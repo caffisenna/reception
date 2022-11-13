@@ -29,6 +29,7 @@ class Check_InController extends AppBaseController
     public function index(Request $request)
     {
         if (isset($request->id)) {
+            // カメラスキャンでQR読み取った時 (id に uuidが入る)
             $participant = Participant::where('uuid', $request->id)->firstorfail();
             $participant->checkedin_at = now();
 

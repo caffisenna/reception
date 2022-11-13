@@ -264,7 +264,10 @@ class ParticipantController extends AppBaseController
         if (isset($input['uuid'])) { // UUID取得
             $participant = Participant::where('uuid', $input['uuid'])->first();
             $sendto = ['email' => $participant->email];
+            // ここでカテゴリ & 参加タイプで切り分けないとだめ
             Mail::to($sendto)->queue(new InvitationSend($participant));
+            $participant->email_sent_at = now();
+            $participant->save();
             Flash::success($participant->name . '様へデジタルパスを送信しました');
         }
 

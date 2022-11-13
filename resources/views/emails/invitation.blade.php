@@ -1,4 +1,10 @@
-{{-- {{ dd($user) }} --}}
+@if (isset($user->seat_number) && isset($user->reception_seat_number))
+    両方参加
+@elseif (isset($user->seat_number) && empty($user->reception_seat_number))
+    式典のみ
+@elseif (empty($user->seat_number) && isset($user->reception_seat_number))
+    レセプションのみ
+@endif
 <p>
     @if (isset($user->pref))
         {{ $user->pref }}連盟

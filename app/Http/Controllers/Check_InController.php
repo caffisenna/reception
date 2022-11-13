@@ -34,6 +34,9 @@ class Check_InController extends AppBaseController
             $participant->checkedin_at = now();
 
             // ここで引率するスカウトも同時チェックインする
+            if($participant->category == '県連代表(4)'){
+                dd('県連代表(4)');
+            }
 
             $participant->save();
             return view('check_in.index')

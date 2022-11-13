@@ -66,6 +66,7 @@ class AbsentController extends AppBaseController
 
     public function fever(Request $request)
     {
+        // 発熱NGの場合
         // dd($request['uuid']); uuidが取れる
         if (isset($request->furigana)) {
             $participants = Participant::where('furigana', 'like', "$request->furigana%")
@@ -80,6 +81,7 @@ class AbsentController extends AppBaseController
         if (isset($request->uuid)) {
             $participant = Participant::where('uuid', $request->uuid)->firstorfail();
             $participant->self_absent = '発熱NG';
+            $participant->checkedin_at = NULL;
             $participant->save();
             Flash::success($participant->name . "さんの発熱欠席処理が完了しました");
             return view('fever_absent.input')->with('participant', $participant);

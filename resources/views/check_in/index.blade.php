@@ -37,7 +37,7 @@
                         <div style="background-color:#115740">
                             <p class="uk-text-large uk-text-center" style="color:#FFF">チェックイン完了</p>
                         </div>
-                        <p class="uk-text-success uk-text-small">ご来場を受け付けました</p>
+                        <p class="uk-text-success uk-text-default">ご来場を受け付けました</p>
                         <a href="{{ url('/home') }}" class="uk-button uk-button-primary">戻る</a>
                         <div class="card-body p-0">
                             <table class="uk-table uk-table-hover uk-table-striped">

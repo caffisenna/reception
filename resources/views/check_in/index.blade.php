@@ -49,7 +49,7 @@
                                     <td>座席番号</td>
                                     <td>
                                         @if (isset($participant->seat_number))
-                                            記念式典: {{ $participant->seat_number }}
+                                            記念式典: {{ $participant->seat_number }}<br>
                                         @endif
                                         @if (isset($participant->reception_seat_number))
                                             レセプション: {{ $participant->reception_seat_number }}

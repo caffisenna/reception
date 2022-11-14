@@ -35,11 +35,11 @@ class Check_InController extends AppBaseController
 
             // ここで引率するスカウトも同時チェックインする
             // 全然途中
-            if($participant->category == '県連代表(4)'){ // 引率指導者かチェック
-                $vs = Participant::where('pref',$participant->pref)->where('category', '県連代表(5)')->first();
+            if ($participant->category == '県連代表(4)') { // 引率指導者かチェック
+                $vs = Participant::where('pref', $participant->pref)->where('category', '県連代表(5)')->first();
                 $vs->checkedin_at = now(); // VSの打刻
                 $vs->save(); // DB保存
-                $bs = Participant::where('pref',$participant->pref)->where('category', '県連代表(6)')->first();
+                $bs = Participant::where('pref', $participant->pref)->where('category', '県連代表(6)')->first();
                 $bs->checkedin_at = now(); // BSの打刻
                 $bs->save(); // DB保存
             }

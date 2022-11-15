@@ -24,7 +24,7 @@
         {{-- <button class="uk-button uk-button-primary uk-button-large uk-align-center uk-margin-large-top"
             onclick="location.href='{{ url('/login') }}'"><span uk-icon="sign-in"></span>ログイン</button> --}}
         <h2>記念式典</h2>
-        <p class="uk-text-primary">記念式典の詳細につきましてはご案内のメールをご参照下さい。</p>
+        <p class="uk-text-warning">記念式典の詳細につきましてはご案内のメールをご参照下さい。</p>
         <h3>デジタルパスの使用方法</h3>
         <ol>
             <li>会場受付に並ぶ際、メールに記載してあるURLへアクセスしてデジタルパスをケータイ端末に表示してください。</li>
@@ -120,7 +120,7 @@
 
 
         ​<h2>レセプション</h2>
-        <p class="uk-text-primary">記念式典の詳細につきましてはご案内のメールをご参照下さい。</p>
+        <p class="uk-text-warning">記念式典の詳細につきましてはご案内のメールをご参照下さい。</p>
 
         <h3>手荷物に関して(レセプション)</h3>
         <ul>

@@ -24,7 +24,7 @@
                         <li>
                             <a href="{{ url('/admin/sendmail_pref') . '/?pref=' }}{{ $pref }}"
                                 onclick="return confirm('{{ $pref }}連盟へデジタルパスを送信します。よろしいですか？')"
-                                class="uk-button uk-button-primary uk-width-1-6"><span
+                                class="uk-button uk-button-primary uk-width-1-3"><span
                                     uk-icon="mail">{{ $pref }}</span></a>
                         </li>
                     @endforeach

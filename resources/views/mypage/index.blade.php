@@ -104,9 +104,9 @@
                                 <div class="swiper-slide">
                                     {!! QrCode::size(150)->generate(url('/s/check_in?id=') . $participant->uuid) !!}
                                 </div>
-                                <div class="swiper-slide">
+                                {{-- <div class="swiper-slide">
                                     <a href="#" class="uk-button uk-button-large uk-button-primary">_</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </td>

@@ -136,7 +136,7 @@
                     });
                 </script>
 
-                {{ $participants->links() }}
+                {{-- {{ $participants->links() }} --}}
             </div>
 
         </div>

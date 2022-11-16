@@ -274,7 +274,8 @@ class ParticipantController extends AppBaseController
         }
 
         $participants = Participant::where('deleted_at', NULL)
-            ->paginate(100);
+            // ->paginate(100);
+            ->get();
 
         return view('participants.sendmail')
             ->with('participants', $participants);

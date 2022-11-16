@@ -39,31 +39,31 @@
         </div>
         @include('flash::message')
         <div class=" uk-margin">
-            <p class="uk-margin-medium uk-text-primary uk-text-small uk-margin-auto-vertical">
+            <p class="uk-margin-medium uk-text-primary uk-text-default uk-margin-auto-vertical">
                 ★このページをブックマーク、もしくはスクリーンショットを保存して受付でご提示下さい。</p>
-            <p class="uk-text-danger">警備の関係で再入場はできません!</p>
         </div>
         <div class="card-body p-0">
             <table class="uk-table">
                 <tr>
                     <td class="uk-text-center">
                         <span class="uk-text-bold uk-text-large">
-                            {{-- ここで来賓を明示する --}}
+                            {{-- ここで来賓カテゴリを明示する --}}
                             @if ($participant->category == '県連代表(1)')
                                 <span class="uk-text-warning">ご来賓</span><br>
                             @endif
                             {{-- ここで来賓を明示する --}}
                             {{ $participant->name }} 様
-                        </span><br>
-                        @if (isset($participant->seat_number))
-                            記念式典:{{ $participant->seat_number }}<br>
-                        @endif
-                        @if (isset($participant->reception_seat_number))
-                            レセプション:{{ $participant->reception_seat_number }}<br>
-                        @endif
-                        @unless(empty($participant->self_absent))
-                            <span class="uk-text-danger">(欠)</span>
-                        @endunless
+                            <br>
+                            @if (isset($participant->seat_number))
+                                記念式典:{{ $participant->seat_number }}<br>
+                            @endif
+                            @if (isset($participant->reception_seat_number))
+                                レセプション:{{ $participant->reception_seat_number }}<br>
+                            @endif
+                            @unless(empty($participant->self_absent))
+                                <span class="uk-text-danger">(欠)</span>
+                            @endunless
+                        </span>
                     </td>
                 </tr>
                 @if (isset($participant->vs->name) || isset($participant->bs->name))
@@ -105,7 +105,7 @@
                                     {!! QrCode::size(150)->generate(url('/s/check_in?id=') . $participant->uuid) !!}
                                 </div>
                                 <div class="swiper-slide">
-                                    <a href="#" class="uk-button uk-button-large uk-button-primary">隠しチェックイン</a>
+                                    <a href="#" class="uk-button uk-button-large uk-button-primary">_</a>
                                 </div>
                             </div>
                         </div>
@@ -116,27 +116,35 @@
                     <td>
                         @if (empty($participant->checkedin_at) && empty($participant->self_absent))
                             <p class="uk-text-default"><a href="#modal-self-absent" uk-toggle
-                                    class=" uk-button uk-button-danger uk-width-1-1@m">欠席(ご本人)</a></p>
+                                    class=" uk-button uk-button-danger uk-width-1-1@m">式典を欠席する(ご本人)</a></p>
                         @elseif(isset($participant->self_absent))
-                            {{ $participant->name }}<br>
+                            {{ $participant->name }}(欠席入力済み)<br>
                         @endif
                         @if (isset($participant->vs->name) &&
                             empty($participant->vs->self_absent) &&
                             empty($participant->vs->checkedin_at))
                             <p class="uk-text-default"><a href="#modal-vs-absent" uk-toggle
-                                    class=" uk-button uk-button-danger uk-width-1-1@m">欠席({{ $participant->vs->name }}様)</a>
+                                    class=" uk-button uk-button-danger uk-width-1-1@m">式典を欠席する({{ $participant->vs->name }}様)</a>
                             </p>
                         @elseif(isset($participant->vs->self_absent))
-                            {{ $participant->vs->name }}<br>
+                            {{ $participant->vs->name }}(欠席入力済み)<br>
                         @endif
                         @if (isset($participant->bs->name) &&
                             empty($participant->bs->self_absent) &&
                             empty($participant->bs->checkedin_at))
                             <p class="uk-text-default"><a href="#modal-bs-absent" uk-toggle
-                                    class=" uk-button uk-button-danger uk-width-1-1@m">欠席({{ $participant->bs->name }}様)</a>
+                                    class=" uk-button uk-button-danger uk-width-1-1@m">式典を欠席する({{ $participant->bs->name }}様)</a>
                             </p>
                         @elseif(isset($participant->bs->self_absent))
-                            {{ $participant->bs->name }}
+                            {{ $participant->bs->name }}(欠席入力済み)
+                        @endif
+
+                        {{-- レセプション欠席入力 --}}
+                        @if (isset($participant->reception_seat_number) && empty($participant->reception_self_absent))
+                            <p class="uk-text-default"><a href="#modal-reception_self-absent" uk-toggle
+                                    class=" uk-button uk-button-danger uk-width-1-1@m">レセプションを欠席する</a></p>
+                        @elseif(isset($participant->reception_self_absent))
+                            レセプション欠席入力済み
                         @endif
                     </td>
                 </tr>
@@ -176,7 +184,7 @@
     <div id="modal-self-absent" uk-modal>
         <div class="uk-modal-dialog uk-modal-body">
             <h2 class="uk-modal-title uk-text-danger">欠席手続き</h2>
-            <p>{{ $participant->name }}様ご自身で欠席手続きを行います。参加を取りやめる場合は<span
+            <p>{{ $participant->name }}様ご自身で<span class="uk-text-danger">記念式典</span>の欠席手続きを行います。参加を取りやめる場合は<span
                     class="uk-text-warning">欠席する</span>ボタンをタップしてください</p>
             @if (isset($participant->vs->name) || isset($participant->bs->name))
                 <p class="uk-text-warning">引率スカウトは受付ブースで個別にチェックインを行って下さい。</p>
@@ -185,6 +193,19 @@
                 <button class="uk-button uk-button-default uk-modal-close" type="button">キャンセル</button>
                 <a class="uk-button uk-button-danger"
                     href="{{ url('/') }}/self/?absent={{ $participant->uuid }}">欠席する</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="modal-reception_self-absent" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title uk-text-danger">レセプション欠席手続き</h2>
+            <p>{{ $participant->name }}様ご自身で<span class="uk-text-danger">レセプション</span>の欠席手続きを行います。参加を取りやめる場合は<span
+                    class="uk-text-warning">欠席する</span>ボタンをタップしてください</p>
+            <p class="uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">キャンセル</button>
+                <a class="uk-button uk-button-danger"
+                    href="{{ url('/') }}/self/?absent={{ $participant->uuid }}&q=reception">欠席する</a>
             </p>
         </div>
     </div>

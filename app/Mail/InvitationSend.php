@@ -30,8 +30,16 @@ class InvitationSend extends Mailable
      */
     public function build()
     {
+        if(isset($this->user->seat_number) && isset($this->user->reception_seat_number)){
+            $subject = 'ボーイスカウト日本連盟100周年記念式典・レセプションのご案内';
+        }elseif(isset($this->user->seat_number) && empty($this->user->reception_seat_number)){
+            $subject = 'ボーイスカウト日本連盟100周年記念式典のご案内';
+        }elseif(empty($this->user->seat_number) && isset($this->user->reception_seat_number)){
+            $subject = 'ボーイスカウト日本連盟100周年レセプションのご案内';
+        }
+
         return $this->view('emails.invitation')
-            ->subject('ボーイスカウト日本連盟100周年記念式典デジタルパスのご案内')
+            ->subject($subject)
             ->with('user', $this->user);
     }
 }

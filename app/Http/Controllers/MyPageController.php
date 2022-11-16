@@ -34,22 +34,27 @@ class MyPageController extends AppBaseController
 
         // 引率スカウトを引っ張る
         if ($participant->category == "県連代表(4)") {
-            $participant->vs = Participant::where('pref', $participant->pref)->where('category', '県連代表(5)')->select('name','uuid','seat_number', 'self_absent','checkedin_at')->first();
-            $participant->bs = Participant::where('pref', $participant->pref)->where('category', '県連代表(6)')->select('name','uuid','seat_number', 'self_absent','checkedin_at')->first();
+            $participant->vs = Participant::where('pref', $participant->pref)->where('category', '県連代表(5)')->select('name', 'uuid', 'seat_number', 'self_absent', 'checkedin_at')->first();
+            $participant->bs = Participant::where('pref', $participant->pref)->where('category', '県連代表(6)')->select('name', 'uuid', 'seat_number', 'self_absent', 'checkedin_at')->first();
         }
 
         return view('mypage.index')
             ->with('participant', $participant);
     }
 
-    public function self_absent(Request $request){
+    public function self_absent(Request $request)
+    {
         // $request['absent'] requestでUUIDが入ってくる
         $uuid = $request['absent'];
-        $scout = Participant::where('uuid',$uuid)->firstorfail();
-        $scout->self_absent = '自己入力';
+        $scout = Participant::where('uuid', $uuid)->firstorfail();
+        if ($request['q'] == 'reception') {
+            $scout->reception_self_absent = '自己入力';
+        } else {
+            $scout->self_absent = '自己入力';
+        }
         $scout->save();
 
-        Flash::success($scout->name.'さんの欠席処理をしました');
+        Flash::success($scout->name . 'さんの欠席処理をしました');
 
         return back();
     }

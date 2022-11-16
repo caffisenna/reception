@@ -29,6 +29,7 @@ class CreateParticipantsTable extends Migration
             $table->string('go_with_leader')->nullable();       // 同行親リーダー メアド or uuid
             $table->string('go_with_scouts')->nullable();       // 引率されるスカウト uuid
             $table->string('self_absent')->nullable();          // 欠席理由 自己入力, 指導者入力, 発熱NG
+            $table->string('reception_self_absent')->nullable();// レセプション欠席入力
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('seat_number')->nullable();          // 式典座席
@@ -37,6 +38,8 @@ class CreateParticipantsTable extends Migration
             $table->string('address')->nullable();
             $table->dateTime('email_sent_at')->nullable();      // デジパス送信日時
             $table->string('fee_checked_at')->nullable();       // 入金チェック
+            $table->string('no_fee')->nullable();               // 参加費不要フラグ
+            $table->string('saj_booth')->nullable();            // 日連受付ブースフラグ
             $table->string('uuid')->unique();
             $table->dateTime('checkedin_at')->nullable();           // 式典チェックイン
             $table->dateTime('reception_checkedin_at')->nullable(); // レセプションチェックイン

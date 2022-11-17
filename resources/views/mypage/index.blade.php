@@ -114,7 +114,7 @@
                 <tr>
 
                     <td>
-                        @if (empty($participant->checkedin_at) && empty($participant->self_absent))
+                        @if (isset($participant->seat_number) && empty($participant->checkedin_at) && empty($participant->self_absent))
                             <p class="uk-text-default"><a href="#modal-self-absent" uk-toggle
                                     class=" uk-button uk-button-danger uk-width-1-1@m">式典を欠席する(ご本人)</a></p>
                         @elseif(isset($participant->self_absent))

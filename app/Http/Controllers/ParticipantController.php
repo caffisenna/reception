@@ -45,8 +45,7 @@ class ParticipantController extends AppBaseController
         if (isset($request->furigana)) {
             // 個別氏名をサーチ
             // $participants = Participant::where('furigana', 'like', "$request->furigana%")->where('checkedin_at', null)->paginate(100);
-            $participants = Participant::where('furigana', 'like', "$request->furigana%")->
-            orwhere('name', 'like', "%$request->furigana%")->paginate(100); // チェックイン済みも取得して表示する
+            $participants = Participant::where('furigana', 'like', "$request->furigana%")->orwhere('name', 'like', "%$request->furigana%")->paginate(100); // チェックイン済みも取得して表示する
 
             // foreachで回して、引率指導者の場合は同じ県連のBSとVSを引っかける
             // $participant->vs $participant->bs などに格納
@@ -360,9 +359,16 @@ class ParticipantController extends AppBaseController
 
     public function seat_number(Request $request)
     {
-        $participants = Participant::where('seat_number', '<>', null)
-            ->orderBy('seat_number')
-            ->get();
+        $input = $request->all();
+        if (isset($input['row'])) {
+            $participants = Participant::where('seat_number', 'LIKE', $input['row'] . '%')
+                ->orderBy('seat_number')
+                ->get();
+        } else {
+            $participants = Participant::where('seat_number', '<>', null)
+                ->orderBy('seat_number')
+                ->get();
+        }
 
         return view('participants.seat_number')
             ->with('participants', $participants);
@@ -370,9 +376,16 @@ class ParticipantController extends AppBaseController
 
     public function reception_seat_number(Request $request)
     {
-        $participants = Participant::where('reception_seat_number', '<>', null)
-            ->orderBy('reception_seat_number')
-            ->get();
+        $input = $request->all();
+        if (isset($input['table'])) {
+            $participants = Participant::where('reception_seat_number', 'LIKE', $input['table'] . '-%')
+                ->orderBy('reception_seat_number')
+                ->get();
+        } else {
+            $participants = Participant::where('reception_seat_number', '<>', null)
+                ->orderBy('reception_seat_number')
+                ->get();
+        }
 
         return view('participants.reception_seat_number')
             ->with('participants', $participants);

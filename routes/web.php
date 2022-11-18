@@ -42,7 +42,9 @@ Route::prefix('admin')->middleware('can:admin')->group(function () {
     Route::get('/sendmail_pref', [App\Http\Controllers\ParticipantController::class, 'sendmail_pref'])->name('sendmail_pref'); // 招待状送信(県連単位)
     Route::get('/fee_check', [App\Http\Controllers\ParticipantController::class, 'fee_check'])->name('fee_check'); // 参加費チェック
     Route::get('/seat_number/', [App\Http\Controllers\ParticipantController::class, 'seat_number'])->name('seat_number'); // 座席一覧
+    Route::post('/seat_number/', [App\Http\Controllers\ParticipantController::class, 'seat_number'])->name('seat_number'); // 座席一覧
     Route::get('/reception_seat_number/', [App\Http\Controllers\ParticipantController::class, 'reception_seat_number'])->name('reception_seat_number'); // レセ一覧
+    Route::post('/reception_seat_number/', [App\Http\Controllers\ParticipantController::class, 'reception_seat_number'])->name('reception_seat_number'); // レセ一覧
 });
 
 // スタッフ用

@@ -240,7 +240,7 @@
                                 <thead>
                                     <tr>
                                         <th>卓・番号</th>
-                                        <th>県連</th>
+                                        <th>カテゴリ</th>
                                         <th>役務</th>
                                         <th>氏名</th>
                                     </tr>

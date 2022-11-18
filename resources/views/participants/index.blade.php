@@ -15,8 +15,8 @@
                     </div>
                     <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
                         {{ Form::open(['url' => '/admin/search']) }}
-                        {!! Form::text('furigana', old('furigana'), ['class' => 'uk-input', 'placeholder' => 'ふりがな']) !!}
-                        {!! Form::submit('ふりがな検索', ['class' => 'uk-button uk-button-primary']) !!}
+                        {!! Form::text('furigana', old('furigana'), ['class' => 'uk-input', 'placeholder' => '氏名orふりがな']) !!}
+                        {!! Form::submit('検索', ['class' => 'uk-button uk-button-primary']) !!}
                         {{ Form::close() }}
                     </div>
                     <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
@@ -100,7 +100,7 @@
                             '',
                             ['class' => 'form-control'],
                         ) }}
-                        {!! Form::submit('県で検索', ['class' => 'uk-button uk-button-primary']) !!}
+                        {!! Form::submit('カテゴリ検索', ['class' => 'uk-button uk-button-primary']) !!}
                         {{ Form::close() }}
                     </div>
                 @endif

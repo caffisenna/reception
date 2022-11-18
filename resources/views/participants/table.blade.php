@@ -69,7 +69,7 @@
     <table class="uk-table uk-table-divider uk-table-hover" id="participants-table">
         <thead>
             <tr>
-                <th>県連</th>
+                <th>カテゴリ</th>
                 <th>役務</th>
                 <th>氏名</th>
                 <th>座席</th>

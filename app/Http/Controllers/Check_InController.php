@@ -56,7 +56,9 @@ class Check_InController extends AppBaseController
     public function input(Request $request)
     {
         if (isset($request->furigana)) {
-            $participants = Participant::where('furigana', 'like', "$request->furigana%")->where('checkedin_at', null)->get();
+            $participants = Participant::where('furigana', 'like', "$request->furigana%")
+            ->orwhere('name', 'like', "%$request->furigana%")
+            ->where('checkedin_at', null)->get();
 
             // 引率スカウトの取得
             foreach ($participants as $value) {

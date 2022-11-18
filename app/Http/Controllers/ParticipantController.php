@@ -357,4 +357,24 @@ class ParticipantController extends AppBaseController
         return view('participants.fee_check')
             ->with('participants', $participants);
     }
+
+    public function seat_number(Request $request)
+    {
+        $participants = Participant::where('seat_number', '<>', null)
+            ->orderBy('seat_number')
+            ->get();
+
+        return view('participants.seat_number')
+            ->with('participants', $participants);
+    }
+
+    public function reception_seat_number(Request $request)
+    {
+        $participants = Participant::where('reception_seat_number', '<>', null)
+            ->orderBy('reception_seat_number')
+            ->get();
+
+        return view('participants.reception_seat_number')
+            ->with('participants', $participants);
+    }
 }

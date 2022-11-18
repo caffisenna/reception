@@ -37,6 +37,19 @@
             <p>取消処理</p>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a href="{{ url('/admin/seat_number') }}" class="nav-link {{ Request::is('/admin/seat_number*') ? 'active' : '' }}">
+            <p>式典座席</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="{{ url('/admin/reception_seat_number') }}" class="nav-link {{ Request::is('/admin/reception_seat_number*') ? 'active' : '' }}">
+            <p>レセプション座席</p>
+        </a>
+    </li>
+
     <li class="nav-item"><a href="https://colab.research.google.com/drive/1sQGFqa_sSCydO8O_p3htjDGU53wUJ8K6?usp=sharing"
             class="nav-link" target="_blank">隣接シート特定<span uk-icon="icon: google"></span></a>
     </li>

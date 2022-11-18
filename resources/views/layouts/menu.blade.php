@@ -39,13 +39,13 @@
     </li>
 
     <li class="nav-item">
-        <a href="{{ url('/admin/seat_number') }}" class="nav-link {{ Request::is('/admin/seat_number*') ? 'active' : '' }}">
+        <a href="{{ url('/admin/seat_number') }}" class="nav-link {{ Request::is('*/seat_number*') ? 'active' : '' }}">
             <p>式典座席</p>
         </a>
     </li>
 
     <li class="nav-item">
-        <a href="{{ url('/admin/reception_seat_number') }}" class="nav-link {{ Request::is('/admin/reception_seat_number*') ? 'active' : '' }}">
+        <a href="{{ url('/admin/reception_seat_number') }}" class="nav-link {{ Request::is('*/reception_seat_number*') ? 'active' : '' }}">
             <p>レセプション座席</p>
         </a>
     </li>

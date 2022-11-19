@@ -42,7 +42,7 @@
                 <td class="uk-text-small">{{ $staffinfo->memo }}</td>
             </tr>
             <tr>
-                <th>チーム</th>
+                <th>部署</th>
                 <td class="uk-text-small">{{ $staffinfo->team }}</td>
             </tr>
             <tr>

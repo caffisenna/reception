@@ -228,6 +228,16 @@ class ParticipantController extends AppBaseController
             ->with('participants', $participants);
     }
 
+    public function reception_absent_list(Request $request)
+    {
+        // レセプション欠席リスト
+        $participants = Participant::where('reception_self_absent', '<>', NULL)
+            ->paginate(100);
+
+        return view('participants.absent_list')
+            ->with('participants', $participants);
+    }
+
     public function cancel_absent(Request $request)
     {
         $uuid = $request['uuid'];

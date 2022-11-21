@@ -20,7 +20,13 @@
     <li class="nav-item">
         <a href="{{ url('/admin/absent_list') }}"
             class="nav-link {{ Request::is('*admin/absent_list') ? 'active' : '' }}">
-            <p>欠席リスト</p>
+            <p>式典欠席</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ url('/admin/reception_absent_list') }}"
+            class="nav-link {{ Request::is('*admin/reception_absent_list') ? 'active' : '' }}">
+            <p>レセプション欠席</p>
         </a>
     </li>
     <li class="nav-item">

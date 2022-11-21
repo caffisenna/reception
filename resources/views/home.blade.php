@@ -26,13 +26,12 @@
                     <tr>
                         <th>カテゴリ</th>
                         <th>人数</th>
-                        <th>チェックイン済み</th>
                     </tr>
                     @foreach ($participants as $participant)
                         <tr>
                             <td class="uk-text-default">{{ $participant['name'] }}</td>
-                            <td>{{ $participant['count'] }}</td>
-                            <td class="uk-text-success">{{ $participant['checked_in'] }}</td>
+                            <td><span class="uk-text-success">{{ $participant['checked_in'] }}</span> /
+                                {{ $participant['count'] }}</td>
                         </tr>
                     @endforeach
                 </table>

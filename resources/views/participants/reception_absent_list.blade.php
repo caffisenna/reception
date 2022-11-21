@@ -21,7 +21,7 @@
 
         <div class="card">
             <div class="card-body p-0">
-                @include('participants.absent_list_table')
+                @include('participants.reception_absent_list_table')
                 {{ $participants->links() }}
             </div>
 

@@ -70,6 +70,7 @@ class AbsentController extends AppBaseController
         // dd($request['uuid']); uuidが取れる
         if (isset($request->furigana)) {
             $participants = Participant::where('furigana', 'like', "$request->furigana%")
+            ->orwhere('name', 'like', "%$request->furigana%")
                 // ->where('checkedin_at', null)
                 ->where('self_absent', null)
                 ->get();

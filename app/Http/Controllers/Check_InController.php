@@ -94,7 +94,9 @@ class Check_InController extends AppBaseController
             }
 
             Flash::success($participant->name . "さんのチェックイン完了");
-            return view('check_in.input')->with('participant', $participant);
+            // return view('check_in.input')->with('participant', $participant);
+            return view('check_in.index')
+                ->with('participant', $participant);
         }
 
         return view('check_in.input');

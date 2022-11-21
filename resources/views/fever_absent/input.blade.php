@@ -11,7 +11,7 @@
                     @include('flash::message')
                     <p class="uk-text-small"><span class="uk-text-danger">発熱者</span>を検索してください</p>
                     {{ Form::open() }}
-                    {!! Form::text('furigana', old('furigana'), ['class' => 'uk-input', 'placeholder' => 'ふりがなを入力']) !!}
+                    {!! Form::text('furigana', old('furigana'), ['class' => 'uk-input', 'placeholder' => '氏名orふりがな']) !!}
                     {!! Form::submit('検索', ['class' => 'uk-button uk-button-primary']) !!}
                     {{ Form::close() }}
                 </div>

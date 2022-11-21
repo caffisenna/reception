@@ -234,7 +234,7 @@ class ParticipantController extends AppBaseController
         $participants = Participant::where('reception_self_absent', '<>', NULL)
             ->paginate(100);
 
-        return view('participants.absent_list')
+        return view('participants.reception_absent_list')
             ->with('participants', $participants);
     }
 

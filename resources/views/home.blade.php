@@ -21,21 +21,23 @@
             @endif
 
             @if (auth::user()->is_admin)
-                <p class="uk-text-large">県連代表 未登録分</p>
-                <table class="uk-table uk-table-divider uk-table-responsive uk-table-striped uk-table-hover">
+                <p class="uk-text-large">チェックイン状況</p>
+                <table class="uk-table uk-table-divider uk-table-striped uk-table-hover">
                     <tr>
-                        <th>県連</th>
-                        <th>役務</th>
+                        <th>カテゴリ</th>
+                        <th>人数</th>
+                        <th>チェックイン済み</th>
                     </tr>
                     @foreach ($participants as $participant)
                         <tr>
-                            <td class="uk-text-danger">{{ $participant->pref }}</td>
-                            <td>{{ $participant->role }}</td>
+                            <td class="uk-text-default">{{ $participant['name'] }}</td>
+                            <td>{{ $participant['count'] }}</td>
+                            <td class="uk-text-success">{{ $participant['checked_in'] }}</td>
                         </tr>
                     @endforeach
                 </table>
             @endauth
-        </div>
     </div>
+</div>
 </div>
 @endsection

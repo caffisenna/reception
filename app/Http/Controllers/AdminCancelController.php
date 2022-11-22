@@ -35,6 +35,11 @@ class AdminCancelController extends AppBaseController
                 $cancel->save();
                 Flash::success($cancel->name . "さんの欠席処理を取り消しました");
                 return back();
+            } elseif ($cat == 'reception_absent') { // 欠席手続きのキャンセル
+                $cancel->reception_self_absent = NULL;
+                $cancel->save();
+                Flash::success($cancel->name . "さんの欠席処理(レセプション)を取り消しました");
+                return back();
             }
         } else { // 何もリクエストがないとき
             $participants = Participant::where('checkedin_at', '<>', NULL)

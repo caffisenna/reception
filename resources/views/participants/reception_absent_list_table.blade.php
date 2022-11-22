@@ -71,10 +71,9 @@
             <tr>
                 <th>氏名</th>
                 <th>県連</th>
-                <th>役務</th>
                 <th>座席</th>
                 <th>理由</th>
-                <th>操作</th>
+                {{-- <th>操作</th> --}}
             </tr>
         </thead>
         <tbody>
@@ -92,7 +91,6 @@
                     </td>
                     <td>{{ $participant->pref }}</td>
                     </td>
-                    <td>{{ $participant->role }}</td>
                     <td>{{ $participant->reception_seat_number }}</td>
                     <td>
                         @if ($participant->reception_self_absent == '発熱NG')
@@ -101,13 +99,13 @@
                             {{ $participant->reception_self_absent }}
                         @endif
                     </td>
-                    <td>
+                    {{-- <td>
                         <div class='btn-group'>
                             <a href="{{ url('/admin/cancel_absent') . "/?uuid=$participant->uuid" }}" uk-toggle
                                 class="uk-button uk-button-danger">取消し</a>
                         </div>
                         {!! Form::close() !!}
-                    </td>
+                    </td> --}}
                 </tr>
             @endforeach
         </tbody>

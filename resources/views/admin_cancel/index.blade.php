@@ -76,18 +76,29 @@
             @include('flash::message')
             <div class="card-body p-0">
                 @if (isset($participants))
-                    <table class="uk-table uk-table-small" id="cancel_table">
+                    <table class="uk-table uk-table-striped " id="cancel_table">
                         <thead>
                             <tr>
                                 <th>氏名</th>
                                 <th>チェックイン</th>
-                                <th>欠席</th>
+                                <th>式典欠席</th>
+                                <th>レセ欠席</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($participants as $participant)
-                                <tr class="uk-text-small">
-                                    <td>{{ $participant->name }}<br>({{ $participant->furigana }})</td>
+                                <tr class="">
+                                    <td>
+                                        <a
+                                            href="{{ route('participants.show', [$participant->id]) }}">{{ $participant->name }}</a><br>
+                                        {{ $participant->pref }}<br>
+                                        @if (isset($participant->seat_number))
+                                            式典:{{ $participant->seat_number }}
+                                        @endif
+                                        @if (isset($participant->reception_seat_number))
+                                            レセ:{{ $participant->reception_seat_number }}
+                                        @endif
+                                    </td>
                                     {{-- チェックイン処理 --}}
                                     <td>
                                         @if (isset($participant->checkedin_at))
@@ -102,7 +113,15 @@
                                         @if (isset($participant->self_absent))
                                             <a href="{{ url('/admin/cancel/?cat=absent&uuid=') . $participant->uuid }}"
                                                 class="uk-button uk-button-danger uk-button-small"
-                                                onclick="return confirm('{{ $participant->name }}の欠席処理を取り消しますか?')"><span
+                                                onclick="return confirm('{{ $participant->name }}の欠席処理(式典)を取り消しますか?')"><span
+                                                    uk-icon="ban"></span></a>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if (isset($participant->reception_self_absent))
+                                            <a href="{{ url('/admin/cancel/?cat=reception_absent&uuid=') . $participant->uuid }}"
+                                                class="uk-button uk-button-danger uk-button-small"
+                                                onclick="return confirm('{{ $participant->name }}の欠席処理(レセプション)を取り消しますか?')"><span
                                                     uk-icon="ban"></span></a>
                                         @endif
                                     </td>

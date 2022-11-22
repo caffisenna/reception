@@ -95,10 +95,10 @@
                     <td>{{ $participant->role }}</td>
                     <td>{{ $participant->reception_seat_number }}</td>
                     <td>
-                        @if ($participant->self_absent == '発熱NG')
-                            <span class="uk-text-danger">{{ $participant->self_absent }}</span>
+                        @if ($participant->reception_self_absent == '発熱NG')
+                            <span class="uk-text-danger">{{ $participant->reception_self_absent }}</span>
                         @else
-                            {{ $participant->self_absent }}
+                            {{ $participant->reception_self_absent }}
                         @endif
                     </td>
                     <td>

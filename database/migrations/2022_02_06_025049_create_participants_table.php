@@ -43,6 +43,8 @@ class CreateParticipantsTable extends Migration
             $table->string('uuid')->unique();
             $table->dateTime('checkedin_at')->nullable();           // 式典チェックイン
             $table->dateTime('reception_checkedin_at')->nullable(); // レセプションチェックイン
+            $table->dateTime('gift_receipt')->nullable();           // 記念品受領
+            $table->dateTime('cloak_receipt')->nullable();          // クローク受領
             $table->timestamps();
             $table->softDeletes();
         });

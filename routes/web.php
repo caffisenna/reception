@@ -25,6 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/mypage', [App\Http\Controllers\MyPageController::class, 'index'])->name('mypage');
 Route::get('/self', [App\Http\Controllers\MyPageController::class, 'self_absent'])->name('self_absent'); // 自己欠席入力
 Route::get('/self_check_in', [App\Http\Controllers\Check_InController::class, 'self_check_in'])->name('self_check_in'); // 自己チェックイン
+Route::get('/receipt', [App\Http\Controllers\Check_InController::class, 'receipt'])->name('receipt'); // 記念品・クローク受領
 
 // 管理ユーザ用
 Route::prefix('admin')->middleware('can:admin')->group(function () {

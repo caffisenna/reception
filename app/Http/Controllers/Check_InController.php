@@ -57,8 +57,8 @@ class Check_InController extends AppBaseController
     {
         if (isset($request->furigana)) {
             $participants = Participant::where('furigana', 'like', "$request->furigana%")
-            ->orwhere('name', 'like', "%$request->furigana%")
-            ->where('checkedin_at', null)->get();
+                ->orwhere('name', 'like', "%$request->furigana%")
+                ->where('checkedin_at', null)->get();
 
             // 引率スカウトの取得
             foreach ($participants as $value) {
@@ -130,6 +130,42 @@ class Check_InController extends AppBaseController
         }
 
         Flash::success($person->name . 'さんのチェックイン処理をしました');
+        return back();
+    }
+
+    public function receipt(Request $request)
+    {
+        $uuid = $request['uuid'];
+        $q = $request['q'];
+
+        // 対象取得(未チェックインを抽出)
+        $person = Participant::where('uuid', $uuid)->firstorfail();
+        if ($q == 'gift') {
+            $person->gift_receipt = now();
+            Flash::success($person->name . 'さんの記念品お渡しが完了しました');
+        } elseif ($q == 'cloak') {
+            $person->cloak_receipt = now();
+            Flash::success($person->name . 'さんのお預かり品返却が完了しました');
+        }
+        $person->save();
+
+        // 引率スカウトの処理
+        // if ($person->category == "県連代表(4)") {
+        //     $vs = Participant::where('pref', $person->pref)->where('category', '県連代表(5)')->first();
+        //     $bs = Participant::where('pref', $person->pref)->where('category', '県連代表(6)')->first();
+
+        //     // チェックイン処理
+        //     if (empty($vs->self_absent)) {  // 欠席入力があればチェックインの打刻しない
+        //         $vs->checkedin_at = now();  // VS
+        //         $vs->save();
+        //     }
+
+        //     if (empty($bs->self_absent)) {  // 欠席入力があればチェックインの打刻しない
+        //         $bs->checkedin_at = now();  // BS
+        //         $bs->save();
+        //     }
+        // }
+
         return back();
     }
 }

@@ -104,9 +104,28 @@
                                 <div class="swiper-slide">
                                     {!! QrCode::size(150)->generate(url('/s/check_in?id=') . $participant->uuid) !!}
                                 </div>
-                                {{-- <div class="swiper-slide">
-                                    <a href="#" class="uk-button uk-button-large uk-button-primary">_</a>
-                                </div> --}}
+                                @if (ENV('QRSWIPE') < now())
+                                    <div class="swiper-slide">
+                                        @if (empty($participant->gift_receipt))
+                                            <a href="#modal-gift-receipt" uk-toggle
+                                                class="uk-button uk-button-large uk-button-primary">記念品受領</a>
+                                        @else
+                                            <p class="uk-text-success uk-text-large">記念品受領済み</p>
+                                            {{ $participant->gift_receipt }}
+                                        @endif
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        @if (empty($participant->cloak_receipt))
+                                            <a href="#modal-cloak-receipt" uk-toggle
+                                                class="uk-button uk-button-large uk-button-primary">クローク受領</a>
+                                        @else
+                                            <p class="uk-text-success uk-text-large">クローク返却済み</p>
+                                            {{ $participant->cloak_receipt }}
+                                        @endif
+                                    </div>
+                                @endif
+
                             </div>
                         </div>
                     </td>
@@ -243,6 +262,35 @@
         </div>
     @endif
     {{-- ボーイ欠席ウィンドウ --}}
+
+    {{-- 記念品受領 --}}
+    <div id="modal-gift-receipt" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title uk-text-danger">記念品受領</h2>
+            <p>{{ $participant->name }}様へ<span class="uk-text-danger">記念品</span>をお渡ししました。</p>
+            <p class="uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">キャンセル</button>
+                <a class="uk-button uk-button-danger"
+                    href="{{ url('/') }}/receipt/?uuid={{ $participant->uuid }}&q=gift">受領</a>
+            </p>
+        </div>
+    </div>
+    {{-- 記念品受領 --}}
+
+    {{-- クローク受領 --}}
+    <div id="modal-cloak-receipt" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title uk-text-danger">クローク受領</h2>
+            <p>{{ $participant->name }}様へ<span class="uk-text-danger">クロークでのお預かり品</span>をお渡ししました。</p>
+            <p class="uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">キャンセル</button>
+                <a class="uk-button uk-button-danger"
+                    href="{{ url('/') }}/receipt/?uuid={{ $participant->uuid }}&q=cloak">受領</a>
+            </p>
+        </div>
+    </div>
+    {{-- クローク受領 --}}
+
     <script>
         const swiper = new Swiper('.swiper', {
             // Optional parameters

@@ -48,8 +48,30 @@
                     <td class="uk-text-center">
                         <span class="uk-text-bold uk-text-large">
                             {{-- ここで来賓カテゴリを明示する --}}
-                            @if ($participant->category == '県連代表(1)')
-                                <span class="uk-text-warning">ご来賓</span><br>
+                            @if ($participant->pref == '行政（国）' ||
+                                $participant->pref == '行政（市）' ||
+                                $participant->pref == '会場関係者' ||
+                                $participant->pref == '①ボーイスカウト振興国会議員連盟' ||
+                                $participant->pref == '②１００周年募金' ||
+                                $participant->pref == '④B-Pフェロー' ||
+                                $participant->pref == '⑤資金醸成団体' ||
+                                $participant->pref == '表彰者' ||
+                                $participant->pref == '⑥宗教関係代表者会議代表者' ||
+                                $participant->pref == '⑦日本連盟名誉役員' ||
+                                $participant->pref == '⑧日本連盟評議員会' ||
+                                $participant->pref == '⑨日本連盟理事会' ||
+                                $participant->pref == '⑩日本連盟監事' ||
+                                $participant->pref == '⑩名誉会議' ||
+                                $participant->pref == '⑩教育顧問会議' ||
+                                $participant->pref == '⑩アンバサダー' ||
+                                $participant->pref == '⑪県連盟連盟長' ||
+                                $participant->pref == '新チャレンジ章協力企業' ||
+                                $participant->pref == '⑫企業' ||
+                                $participant->pref == '⑫関係団体（外部）' ||
+                                $participant->pref == '⑬関係団体（内部）' ||
+                                $participant->pref == 'レセプション協力')
+                                <span class="uk-text-danger"><span uk-icon="star"></span> ご来賓 <span
+                                        uk-icon="star"></span></span><br>
                             @endif
                             {{-- ここで来賓を明示する --}}
                             {{ $participant->name }} 様

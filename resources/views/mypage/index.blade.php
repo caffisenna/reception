@@ -38,9 +38,8 @@
             </p>
         </div>
         @include('flash::message')
-        <div class=" uk-margin">
-            <p class="uk-margin-medium uk-text-primary uk-text-default uk-margin-auto-vertical">
-                ★このページをブックマーク、もしくはスクリーンショットを保存して受付でご提示下さい。</p>
+        <div class=" uk-margin uk-text-center">
+            <img src="{{ url('/images/logo-sp.jpg') }}">
         </div>
         <div class="card-body p-0">
             <table class="uk-table">
@@ -190,6 +189,7 @@
                     </td>
                 </tr>
             </table>
+            <p class="uk-text-warning uk-text-center uk-text-small">このページを受付でご提示下さい</p>
         </div>
         <footer class="" style="background-color:#115740; color:#fff">
             <p class="uk-text-small uk-text-center uk-margin-auto-vertical">100周年記念式典部会<br>

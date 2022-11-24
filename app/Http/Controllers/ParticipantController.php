@@ -284,6 +284,7 @@ class ParticipantController extends AppBaseController
         }
 
         $participants = Participant::where('deleted_at', NULL)
+        ->where('name', '<>', '')
             // ->paginate(100);
             ->get();
 

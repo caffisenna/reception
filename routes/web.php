@@ -26,6 +26,7 @@ Route::get('/mypage', [App\Http\Controllers\MyPageController::class, 'index'])->
 Route::get('/self', [App\Http\Controllers\MyPageController::class, 'self_absent'])->name('self_absent'); // 自己欠席入力
 Route::get('/self_check_in', [App\Http\Controllers\Check_InController::class, 'self_check_in'])->name('self_check_in'); // 自己チェックイン
 Route::get('/receipt', [App\Http\Controllers\Check_InController::class, 'receipt'])->name('receipt'); // 記念品・クローク受領
+Route::get('/checkin_status', [App\Http\Controllers\Check_InController::class, 'status'])->name('status'); // チェックインスターテス
 
 // 管理ユーザ用
 Route::prefix('admin')->middleware('can:admin')->group(function () {
@@ -61,6 +62,8 @@ Route::prefix('s')->middleware('can:staff')->group(function () {
     Route::post('/fever_absent/input', [App\Http\Controllers\AbsentController::class, 'fever'])->name('fever'); // 発熱リスト検索
     Route::get('/cancel', [App\Http\Controllers\CancelController::class, 'index'])->name('cancel'); // キャンセル処理
     Route::post('/cancel', [App\Http\Controllers\CancelController::class, 'index'])->name('cancel'); // キャンセルリスト検索
+    Route::get('/digipass', [App\Http\Controllers\StaffinfoController::class, 'digipass'])->name('digipass');
+    Route::get('/digipass/arrive', [App\Http\Controllers\StaffinfoController::class, 'arrive'])->name('arrive');
 });
 
 // 県連用

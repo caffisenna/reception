@@ -43,7 +43,9 @@ class AdminCancelController extends AppBaseController
             }
         } else { // 何もリクエストがないとき
             $participants = Participant::where('checkedin_at', '<>', NULL)
-                ->orwhere('self_absent', '<>', NULL)->orderby('id', 'asc')->get();
+                ->orwhere('self_absent', '<>', NULL)
+                ->orwhere('reception_self_absent', '<>', NULL)
+                ->orderby('id', 'asc')->get();
 
             // $participant->save();
             return view('admin_cancel.index')

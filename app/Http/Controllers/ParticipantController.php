@@ -390,6 +390,7 @@ class ParticipantController extends AppBaseController
         $input = $request->all();
         if (isset($input['table'])) {
             $participants = Participant::where('reception_seat_number', 'LIKE', $input['table'] . '-%')
+            ->where('reception_self_absent',  NULL)
                 ->orderBy('reception_seat_number')
                 ->get();
         } else {

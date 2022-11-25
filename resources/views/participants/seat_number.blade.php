@@ -251,7 +251,14 @@
                                     <tbody>
                                         @foreach ($participants as $participant)
                                             <tr>
-                                                <td>{{ $participant->seat_number }}</td>
+                                                <td>
+                                                    @if (isset($participant->checkedin_at))
+                                                        <span
+                                                            class="uk-text-success">{{ $participant->seat_number }}</span>
+                                                    @else
+                                                        {{ $participant->seat_number }}
+                                                    @endif
+                                                </td>
                                                 <td>{{ $participant->pref }}</td>
                                                 <td>
                                                     @switch($participant->category)

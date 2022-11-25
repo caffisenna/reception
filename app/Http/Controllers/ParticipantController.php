@@ -405,4 +405,30 @@ class ParticipantController extends AppBaseController
         return view('participants.reception_seat_number')
             ->with('participants', $participants);
     }
+
+    public function absent(Request $request)
+    {
+        $uuid = $request['uuid'];
+        $q = $request['q'];
+        $participant = Participant::where('uuid', $uuid)->firstorfail();
+
+        if (empty($participant)) {
+            Flash::error('Participant not found');
+
+            return redirect(route('participants.index'));
+        }
+
+        if (isset($participant)) {
+            if ($q == 'ceremony')
+                $participant->self_absent = 'スタッフ入力';
+            elseif ($q == 'reception') {
+                $participant->reception_self_absent = 'スタッフ入力';
+            }
+            $participant->save();
+        }
+
+        Flash::success($participant->name . 'の欠席入力をしました');
+
+        return redirect(route('participants.index'));
+    }
 }

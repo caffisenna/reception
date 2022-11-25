@@ -26,7 +26,7 @@
                         );
                         var title = $(cell).text();
                         $(cell).html('<input type="text" placeholder="' + title +
-                                            '" style="width:60px" />');
+                            '" style="width:60px" />');
 
                         // On every keypress in this input
                         $(
@@ -127,9 +127,15 @@
                     <td>
                         @if (isset($participant->seat_number))
                             式典:{{ $participant->seat_number }}
+                            @if (isset($participant->self_absent))
+                                <span class="uk-text-danger">(欠)</span>
+                            @endif
                         @endif
                         @if (isset($participant->reception_seat_number))
                             <br>レセ:{{ $participant->reception_seat_number }}
+                            @if (isset($participant->reception_self_absent))
+                                <span class="uk-text-danger">(欠)</span>
+                            @endif
                         @endif
                     </td>
                     <td>
@@ -149,6 +155,10 @@
                                 'class' => 'btn btn-danger btn-xs',
                                 'onclick' => "return confirm('本当に削除しますか?')",
                             ]) !!}
+                            <a href="{{ url('/admin/absent/') }}/?q=ceremony&uuid={{ $participant->uuid }}"
+                                class='btn btn-default btn-xs uk-button-danger'>式典</a>
+                            <a href="{{ url('/admin/absent/') }}/?q=reception&uuid={{ $participant->uuid }}"
+                                class='btn btn-default btn-xs uk-button-danger'>レセ</a>
                         </div>
                         {!! Form::close() !!}
                     </td>

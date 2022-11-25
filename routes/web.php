@@ -49,6 +49,7 @@ Route::prefix('admin')->middleware('can:admin')->group(function () {
     Route::post('/seat_number/', [App\Http\Controllers\ParticipantController::class, 'seat_number'])->name('seat_number'); // 座席一覧
     Route::get('/reception_seat_number/', [App\Http\Controllers\ParticipantController::class, 'reception_seat_number'])->name('reception_seat_number'); // レセ一覧
     Route::post('/reception_seat_number/', [App\Http\Controllers\ParticipantController::class, 'reception_seat_number'])->name('reception_seat_number'); // レセ一覧
+    Route::get('/absent/', [App\Http\Controllers\ParticipantController::class, 'absent'])->name('absent'); // キャンセル入力
 });
 
 // スタッフ用

@@ -284,7 +284,7 @@ class ParticipantController extends AppBaseController
         }
 
         $participants = Participant::where('deleted_at', NULL)
-        ->where('name', '<>', '')
+            ->where('name', '<>', '')
             // ->paginate(100);
             ->get();
 
@@ -373,10 +373,12 @@ class ParticipantController extends AppBaseController
         $input = $request->all();
         if (isset($input['row'])) {
             $participants = Participant::where('seat_number', 'LIKE', $input['row'] . '%')
+                ->where('self_absent',  NULL)
                 ->orderBy('seat_number')
                 ->get();
         } else {
             $participants = Participant::where('seat_number', '<>', null)
+                ->where('self_absent',  NULL)
                 ->orderBy('seat_number')
                 ->get();
         }
@@ -390,11 +392,12 @@ class ParticipantController extends AppBaseController
         $input = $request->all();
         if (isset($input['table'])) {
             $participants = Participant::where('reception_seat_number', 'LIKE', $input['table'] . '-%')
-            ->where('reception_self_absent',  NULL)
+                ->where('reception_self_absent',  NULL)
                 ->orderBy('reception_seat_number')
                 ->get();
         } else {
             $participants = Participant::where('reception_seat_number', '<>', null)
+                ->where('self_absent',  NULL)
                 ->orderBy('reception_seat_number')
                 ->get();
         }

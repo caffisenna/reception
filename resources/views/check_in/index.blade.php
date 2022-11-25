@@ -37,16 +37,17 @@
                         <div style="background-color:#115740">
                             <p class="uk-text-large uk-text-center" style="color:#FFF">チェックイン完了</p>
                         </div>
-                        <p class="uk-text-success uk-text-default">ご来場を受け付けました</p>
-                        <a href="{{ url('/home') }}" class="uk-button uk-button-primary">戻る</a>
+                        <p class="uk-text-success uk-text-large">ご来場を受け付けました</p>
+                        <div class="uk-margin"><a href="{{ url('/home') }}"
+                                class="uk-button uk-button-primary uk-width-1-2">戻る</a></div>
                         <div class="card-body p-0">
-                            <table class="uk-table uk-table-hover uk-table-striped">
+                            <table class="uk-table uk-table-hover uk-table-striped uk-text-large">
                                 <tr>
                                     <td>氏名</td>
                                     <td>{{ $participant->name }} 様</td>
                                 </tr>
                                 <tr>
-                                    <td>座席番号</td>
+                                    <td>座席</td>
                                     <td>
                                         @if (isset($participant->seat_number))
                                             記念式典: {{ $participant->seat_number }}
@@ -78,7 +79,7 @@
                                     <td>{{ $participant->role }}</td>
                                 </tr>
                                 <tr>
-                                    <td>チェックイン</td>
+                                    <td>日時</td>
                                     <td>{{ $participant->checkedin_at }}</td>
                                 </tr>
                             </table>

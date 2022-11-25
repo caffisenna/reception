@@ -2,4 +2,4 @@
 
 @section('title', __('Not Found'))
 @section('code', '404')
-@section('message', __('データが見つかりません'))
+@section('message', __('登録データが見つかりません。システムチームに連絡してください'))

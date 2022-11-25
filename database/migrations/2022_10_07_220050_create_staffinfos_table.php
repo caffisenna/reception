@@ -30,7 +30,9 @@ class CreateStaffinfosTable extends Migration
             $table->string('address')->nullable();
             $table->string('team')->nullable();
             $table->text('memo')->nullable();
+            $table->string('uuid')->unique();
             $table->timestamps();
+            $table->dateTime('checkedin_at')->nullable();  // 到着日時
             $table->softDeletes();
         });
     }

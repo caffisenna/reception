@@ -113,6 +113,12 @@
             <p>スタッフ情報</p>
         </a>
     </li>
+    <li class="nav-item">
+        <a href="{{ url('/s/digipass') }}"
+            class="nav-link {{ Request::is('/s/digipass*') ? 'active' : '' }}">
+            <p>デジタルパス</p>
+        </a>
+    </li>
 @endif
 
 @if (auth()->user()->is_pref)
@@ -125,7 +131,6 @@
         </a>
     </li>
 @endif
-
 
 {{-- <p class="uk-text-warning">マイページ</p>
 <li class="nav-item">

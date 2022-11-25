@@ -31,16 +31,14 @@ class StaffinfoController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $staffinfo = Staffinfo::where('user_id',Auth::user()->id)->first();
+        $staffinfo = Staffinfo::where('user_id', Auth::user()->id)->first();
 
-        if(isset($staffinfo)){
+        if (isset($staffinfo)) {
             return view('staffinfos.index')
-            ->with('staffinfo', $staffinfo);
-        }else{
+                ->with('staffinfo', $staffinfo);
+        } else {
             return view('staffinfos.index');
         }
-
-
     }
 
     /**
@@ -83,7 +81,7 @@ class StaffinfoController extends AppBaseController
     {
         $staffinfo = $this->staffinfoRepository->find($id);
 
-        if($staffinfo->user_id <> Auth::user()->id){
+        if ($staffinfo->user_id <> Auth::user()->id) {
             Flash::error('閲覧権限がありません');
             return redirect(route('staffinfos.index'));
         }
@@ -107,7 +105,7 @@ class StaffinfoController extends AppBaseController
     public function edit($id)
     {
         $staffinfo = $this->staffinfoRepository->find($id);
-        if($staffinfo->user_id <> Auth::user()->id){
+        if ($staffinfo->user_id <> Auth::user()->id) {
             Flash::error('閲覧権限がありません');
             return redirect(route('staffinfos.index'));
         }
@@ -170,5 +168,50 @@ class StaffinfoController extends AppBaseController
         Flash::success('スタッフ情報を削除しました');
 
         return redirect(route('staffinfos.index'));
+    }
+
+    public function digipass(Request $request)
+    {
+        $staff = Staffinfo::where('user_id', Auth::user()->id)->with('user')->first();
+        // dd($staff);
+
+        if (isset($staff)) {
+            return view('mypage.staff')
+                ->with('staff', $staff);
+        }
+    }
+
+    public function arrive(Request $request)
+    {
+        $staff = Staffinfo::where('user_id', Auth::user()->id)->with('user')->first();
+        // dd($staff);
+
+        if (isset($staff)) {
+            $staff->checkedin_at = now();
+            $staff->save();
+            Flash::success('チェックインしました');
+            return view('mypage.staff')
+                ->with('staff', $staff);
+        }
+    }
+
+    public function staff_checkin(Request $request)
+    {
+        $uuid = $request['uuid'];
+        $checkin = $request['checkin'];
+        $staff = Staffinfo::where('uuid', $uuid)->with('user')->first();
+
+        if (isset($staff) && empty($checkin)) {
+            return view('mypage.pr_staff')
+                ->with('staff', $staff);
+        }
+
+        if (isset($staff) && $checkin == 'true') {
+            $staff->checkedin_at = now();
+            $staff->save();
+            Flash::success('チェックインしました');
+            return view('mypage.pr_staff')
+                ->with('staff', $staff);
+        }
     }
 }

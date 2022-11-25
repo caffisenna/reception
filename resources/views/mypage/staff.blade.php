@@ -95,7 +95,7 @@
             <p class="uk-text-right">
                 <button class="uk-button uk-button-default uk-modal-close uk-width-1-1@m" type="button">キャンセル</button>
                 <a class="uk-button uk-button-primary uk-width-1-1@m"
-                    href="{{ url('/') }}/digipass/arrive/?uuid={{ $staff->uuid }}">チェックインする</a>
+                    href="{{ url('/') }}/s/digipass/arrive/?uuid={{ $staff->uuid }}">チェックインする</a>
             </p>
         </div>
     </div>

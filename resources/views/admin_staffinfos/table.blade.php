@@ -79,7 +79,14 @@
         <tbody>
             @foreach ($staffinfos as $staffinfo)
                 <tr>
-                    <td>{{ $staffinfo->user->name }}<br>({{ $staffinfo->furigana }})</td>
+                    <td>
+                        @if (isset($staffinfo->checkedin_at))
+                            <span
+                                class="uk-text-success">{{ $staffinfo->user->name }}<br>({{ $staffinfo->furigana }})</span>
+                        @else
+                            {{ $staffinfo->user->name }}<br>({{ $staffinfo->furigana }})
+                        @endif
+                    </td>
                     <td>{{ $staffinfo->team }}</td>
                     <td>{{ $staffinfo->prefecture }}連盟<br>{{ $staffinfo->district }}地区
                         {{ $staffinfo->dan }}団</td>
